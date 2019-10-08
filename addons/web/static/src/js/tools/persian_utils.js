@@ -64,11 +64,22 @@ odoo.define('web.persian_utils', function () {
     function autoFix(value) {
         return fixHalfSpace(persianString(value));
     }
+    /**
+    * Changes Latin Digits to Persian Digits only if current user's language is Persian
+    * @param {string} value
+    *
+     * @returns {string} replaced value
+    * */
+    function autoDigitFormat(value){
+        return moment.locale() === 'fa' ? persianNum(value) : value;
+    }
+
     return {
         toEnglishNum: englishNum,
         toPersianNum: persianNum,
         arabicToPersian: persianString,
         fixPersianSpacing: fixHalfSpace,
         autoFixPersian: autoFix,
+        autoPersianDigitFormat : autoDigitFormat,
     }
 });
