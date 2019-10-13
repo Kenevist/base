@@ -45,6 +45,7 @@
     //          console.log(m,d,j);
     //      }
     const JT = {
+        MAX_JALALI_YEAR: 1500,
         //Converts a Gregorian date to Jalaali.
         toJalaali: (gy, gm, gd) => JT.d2j(JT.g2d(gy, gm, gd)),
         // Converts a Jalaali date to Gregorian.
@@ -2368,7 +2369,7 @@ function checkOverflow (m) {
     if (a && getParsingFlags(m).overflow === -2) {
         overflow =
             a[MONTH]       < 0 || a[MONTH]       > 11  ? MONTH :
-            a[DATE]        < 1 || a[DATE]        > (m._locale._abbr==="fa"? JT.jalaaliMonthLength(a[YEAR], a[MONTH]):daysInMonth(a[YEAR], a[MONTH])) ? DATE :
+            a[DATE]        < 1 || a[DATE]        > ((m._locale._abbr==="fa" && a[YEAR]<JT.MAX_JALALI_YEAR)? JT.jalaaliMonthLength(a[YEAR], a[MONTH]):daysInMonth(a[YEAR], a[MONTH])) ? DATE :
             a[HOUR]        < 0 || a[HOUR]        > 24 || (a[HOUR] === 24 && (a[MINUTE] !== 0 || a[SECOND] !== 0 || a[MILLISECOND] !== 0)) ? HOUR :
             a[MINUTE]      < 0 || a[MINUTE]      > 59  ? MINUTE :
             a[SECOND]      < 0 || a[SECOND]      > 59  ? SECOND :
@@ -2590,7 +2591,8 @@ function configFromArray (config) {
         config._a[HOUR] = 0;
     }
     //<PMN>
-    if (config._locale._abbr==='fa' && input[YEAR]<1700){
+    // if current locale is jalali and input date is also jalali,
+    if (config._locale._abbr==='fa' && input[YEAR]<JT.MAX_JALALI_YEAR){
         const t = JT.toGregorian(input[YEAR],input[MONTH],input[DATE]);
         input[YEAR]=t.gy;
         input[MONTH]=t.gm;

@@ -342,7 +342,7 @@ function formatMonetary(value, field, options) {
         return formatted_value;
     }
     if (currency.position === "after") {
-        return formatted_value += '&nbsp;' + currency.symbol;
+        return formatted_value + '&nbsp;' + currency.symbol;
     } else {
         return currency.symbol + '&nbsp;' + formatted_value;
     }
