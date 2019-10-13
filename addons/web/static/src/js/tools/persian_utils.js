@@ -71,7 +71,7 @@ odoo.define('web.persian_utils', function () {
      * @returns {string} replaced value
     * */
     function autoDigitFormat(value){
-        return moment.locale() === 'fa' ? persianNum(value) : value;
+        return odoo.session_info.user_context.lang === 'fa_IR' ? persianNum(value) : value;
     }
 
     return {
