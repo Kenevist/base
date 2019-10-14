@@ -60,6 +60,11 @@ from .tools.safe_eval import safe_eval
 from .tools.translate import _
 from .tools import date_utils
 
+from .tools import jadatetime
+
+# Set Persian glyphs
+jadatetime.set_locale('fa_IR')
+
 _logger = logging.getLogger(__name__)
 _schema = logging.getLogger(__name__ + '.schema')
 _unlink = logging.getLogger(__name__ + '.unlink')
@@ -1899,6 +1904,41 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
             Helper method to collect important information about groupbys: raw
             field name, type, time information, qualified name, ...
         """
+
+        def create_qualified_field_sql_in_jalali():
+            EXTRACT_YEAR = "0,5"
+            EXTRACT_YEAR_MONTH = "0,8"
+            EXTRACT_MONTH = "6,2"
+            if gb_function == 'month' or not gb_function:
+                return " substring(g2j({qf}),{slice}) ||'-01 00:00:00'".format(qf=qualified_field,
+                                                                                slice=EXTRACT_YEAR_MONTH)
+            elif gb_function == 'year':
+                return " substring(g2j({qf}),{slice}) ||'-01-01 00:00:00'".format(qf=qualified_field,
+                                                                                   slice=EXTRACT_YEAR)
+            elif gb_function == 'quarter':
+                return " case when substring(g2j({qf}),{ws})<'04' then substring(g2j( {qf}),{ts}) ||'-01-01 00:00:00' " \
+                       "when substring(g2j({qf}),{ws})<'07' then substring(g2j( {qf}),{ts}) ||'-04-01 00:00:00' " \
+                       "when substring(g2j({qf}),{ws})<'10' then substring(g2j( {qf}),{ts}) ||'-07-01 00:00:00' " \
+                       "when substring(g2j({qf}),{ws})<'13' then substring(g2j( {qf}),{ts}) ||'-10-01 00:00:00' " \
+                       "end ".format(qf=qualified_field, ws=EXTRACT_MONTH, ts=EXTRACT_YEAR)
+                #qualified field, when slice, then slice
+
+            elif gb_function == 'week':
+                return " case when extract(dow from {qf})=0 then g2j({qf}- interval '1 day')||' 00:00:00' " \
+                       " when extract(dow from  {qf})=1 then g2j({qf}- interval '2 day')||' 00:00:00' " \
+                       " when extract(dow from  {qf})=2 then g2j({qf}- interval '3 day') ||' 00:00:00'" \
+                       " when extract(dow from  {qf})=3 then g2j({qf}- interval '4 day')||' 00:00:00' " \
+                       " when extract(dow from  {qf})=4 then g2j({qf}- interval '5 day')||' 00:00:00' " \
+                       " when extract(dow from  {qf})=5 then g2j({qf}- interval '6 day')||' 00:00:00' " \
+                       " when extract(dow from  {qf})=6 then g2j({qf} ) ||' 00:00:00'  end".format(
+                    qf=qualified_field)
+            elif gb_function == 'day':
+                return " substring(g2j( {qf}),0,{slice}) ||' 00:00:00'".format(qf=qualified_field, slice=11)
+            elif gb_function == 'hour':
+                return " substring(g2j( {qf}),0,{slice}) ||':00:00'".format(qf=qualified_field, slice=14)
+            else:
+                return qualified_field
+
         split = gb.split(':')
         field_type = self._fields[split[0]].type
         gb_function = split[1] if len(split) == 2 else None
@@ -1920,7 +1960,7 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
                 'day': 'dd MMM yyyy', # yyyy = normal year
                 'week': "'W'w YYYY",  # w YYYY = ISO week-year
                 'month': 'MMMM yyyy',
-                'quarter': 'QQQ yyyy',
+                'quarter': 'QQQQ yyyy',
                 'year': 'yyyy',
             }
             time_intervals = {
@@ -1933,7 +1973,10 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
             }
             if tz_convert:
                 qualified_field = "timezone('%s', timezone('UTC',%s))" % (self._context.get('tz', 'UTC'), qualified_field)
-            qualified_field = "date_trunc('%s', %s::timestamp)" % (gb_function or 'month', qualified_field)
+            if self._context.get('lang') == 'fa_IR':
+                qualified_field = create_qualified_field_sql_in_jalali()
+            else:
+                qualified_field = "date_trunc('%s', %s::timestamp)" % (gb_function or 'month', qualified_field)
         if field_type == 'boolean':
             qualified_field = "coalesce(%s,false)" % qualified_field
         return {
@@ -1958,7 +2001,8 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
         if gb and gb['type'] in ('date', 'datetime') and value:
             if isinstance(value, pycompat.string_types):
                 dt_format = DEFAULT_SERVER_DATETIME_FORMAT if gb['type'] == 'datetime' else DEFAULT_SERVER_DATE_FORMAT
-                value = datetime.datetime.strptime(value, dt_format)
+                value = datetime.datetime.strptime(value, dt_format) if self._context.get('lang') != 'fa_IR'\
+                    else jadatetime.datetime.strptime(value, dt_format)
             if gb['tz_convert']:
                 value = pytz.timezone(self._context['tz']).localize(value)
         return value
@@ -2003,16 +2047,19 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
 
                     range_start = range_start.strftime(fmt)
                     range_end = range_end.strftime(fmt)
-                    if ftype == 'datetime':
-                        label = babel.dates.format_datetime(
-                            value, format=gb['display_format'],
-                            tzinfo=tzinfo, locale=locale
-                        )
+                    if self._context.get('lang') == 'fa_IR':
+                        label = value.aslocale('fa_IR').format_datetime(gb['display_format'].replace("'W'", "'هفته '"))
                     else:
-                        label = babel.dates.format_date(
-                            value, format=gb['display_format'],
-                            locale=locale
-                        )
+                        if ftype == 'datetime':
+                            label = babel.dates.format_datetime(
+                                value, format=gb['display_format'],
+                                tzinfo=tzinfo, locale=locale
+                            )
+                        else:
+                            label = babel.dates.format_date(
+                                value, format=gb['display_format'],
+                                locale=locale
+                            )
                     data[gb['groupby']] = ('%s/%s' % (range_start, range_end), label)
                     d = [
                         '&',
