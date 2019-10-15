@@ -1,8 +1,32 @@
--- Function: g2j(timestamp with time zone)
+-- Postgres 9.1 or later: Careful! It drops your functions!
+-- drops all overridden functions with same name
+-- if g2j( timestamp with time zone) exists, it will be executed when it called with g2j(date)
+-- in that case, the ate will be converted to local timezone. if the database (or web server?) is not in UTC
+-- dates *can* be changed when converted to timestamp with time zone, we have to be sure that the only
+-- active function is g2j(timestamp without time zone) so we have to drop all g2j functions.
 
--- DROP FUNCTION g2j(timestamp with time zone);
+CREATE OR REPLACE FUNCTION f_delfunc(_name text, OUT func_dropped int) AS
+$func$
+DECLARE
+   _sql text;
+BEGIN
+   SELECT count(*)::int
+        , 'DROP FUNCTION ' || string_agg(oid::regprocedure::text, '; DROP FUNCTION ')
+   FROM   pg_proc
+   WHERE  proname = _name
+   AND    pg_function_is_visible(oid)
+   INTO   func_dropped, _sql;  -- only returned if trailing DROPs succeed
 
-CREATE OR REPLACE FUNCTION g2j(in_date timestamp with time zone)
+   IF func_dropped > 0 THEN    -- only if function(s) found
+     EXECUTE _sql;
+   END IF;
+END
+$func$ LANGUAGE plpgsql;
+
+SELECT f_delfunc('g2j');
+
+-- Function: g2j(timestamp without time zone)
+CREATE OR REPLACE FUNCTION g2j(in_date timestamp without time zone)
   RETURNS character varying AS
 $BODY$
 DECLARE
