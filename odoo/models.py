@@ -1916,10 +1916,10 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
                 return " substring(g2j({qf}),{slice}) ||'-01-01 00:00:00'".format(qf=qualified_field,
                                                                                    slice=EXTRACT_YEAR)
             elif gb_function == 'quarter':
-                return " case when substring(g2j({qf}),{ws})<'04' then substring(g2j( {qf}),{ts}) ||'-01-01 00:00:00' " \
-                       "when substring(g2j({qf}),{ws})<'07' then substring(g2j( {qf}),{ts}) ||'-04-01 00:00:00' " \
-                       "when substring(g2j({qf}),{ws})<'10' then substring(g2j( {qf}),{ts}) ||'-07-01 00:00:00' " \
-                       "when substring(g2j({qf}),{ws})<'13' then substring(g2j( {qf}),{ts}) ||'-10-01 00:00:00' " \
+                return " case when substring(g2j({qf}),{ws})<'04' then substring(g2j({qf}),{ts}) ||'-01-01 00:00:00' " \
+                       "when substring(g2j({qf}),{ws})<'07' then substring(g2j({qf}),{ts}) ||'-04-01 00:00:00' " \
+                       "when substring(g2j({qf}),{ws})<'10' then substring(g2j({qf}),{ts}) ||'-07-01 00:00:00' " \
+                       "when substring(g2j({qf}),{ws})<'13' then substring(g2j({qf}),{ts}) ||'-10-01 00:00:00' " \
                        "end ".format(qf=qualified_field, ws=EXTRACT_MONTH, ts=EXTRACT_YEAR)
                 #qualified field, when slice, then slice
 
@@ -1933,9 +1933,9 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
                        " when extract(dow from  {qf})=6 then g2j({qf} ) ||' 00:00:00'  end".format(
                     qf=qualified_field)
             elif gb_function == 'day':
-                return " substring(g2j( {qf}),0,{slice}) ||' 00:00:00'".format(qf=qualified_field, slice=11)
+                return " substring(g2j({qf}),0,{slice}) ||' 00:00:00'".format(qf=qualified_field, slice=11)
             elif gb_function == 'hour':
-                return " substring(g2j( {qf}),0,{slice}) ||':00:00'".format(qf=qualified_field, slice=14)
+                return " substring(g2j({qf}),0,{slice}) ||':00:00'".format(qf=qualified_field, slice=14)
             else:
                 return qualified_field
 
@@ -1957,8 +1957,8 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
                 # such as 2006-01-01 being formatted as "January 2005" in some locales.
                 # Cfr: http://babel.pocoo.org/en/latest/dates.html#date-fields
                 'hour': 'hh:00 dd MMM',
-                'day': 'dd MMM yyyy', # yyyy = normal year
-                'week': "'W'w YYYY",  # w YYYY = ISO week-year
+                'day': 'dd MMM yyyy',  # yyyy = normal year
+                'week': "'W'w YYYY",   # w YYYY = ISO week-year
                 'month': 'MMMM yyyy',
                 'quarter': 'QQQQ yyyy',
                 'year': 'yyyy',
@@ -2001,7 +2001,7 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
         if gb and gb['type'] in ('date', 'datetime') and value:
             if isinstance(value, pycompat.string_types):
                 dt_format = DEFAULT_SERVER_DATETIME_FORMAT if gb['type'] == 'datetime' else DEFAULT_SERVER_DATE_FORMAT
-                value = datetime.datetime.strptime(value, dt_format) if self._context.get('lang') != 'fa_IR'\
+                value = datetime.datetime.strptime(value, dt_format) if self._context.get('lang') != 'fa_IR' \
                     else jadatetime.datetime.strptime(value, dt_format)
             if gb['tz_convert']:
                 value = pytz.timezone(self._context['tz']).localize(value)
@@ -2034,8 +2034,8 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
                     locale = self._context.get('lang') or 'en_US'
                     fmt = DEFAULT_SERVER_DATETIME_FORMAT if ftype == 'datetime' else DEFAULT_SERVER_DATE_FORMAT
                     tzinfo = None
-                    range_start = value
-                    range_end = value + gb['interval']
+                    range_start = value.togregorian()
+                    range_end = range_start + gb['interval']
                     # value from postgres is in local tz (so range is
                     # considered in local tz e.g. "day" is [00:00, 00:00[
                     # local rather than UTC which could be [11:00, 11:00]
@@ -2047,14 +2047,19 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
 
                     range_start = range_start.strftime(fmt)
                     range_end = range_end.strftime(fmt)
-                    if self._context.get('lang') == 'fa_IR':
-                        label = value.aslocale('fa_IR').format_datetime(gb['display_format'].replace("'W'", "'هفته '"))
-                    else:
-                        if ftype == 'datetime':
+                    if ftype == 'datetime':
+                        if locale == 'fa_IR':
+                            label = value.aslocale(locale).format_datetime(
+                                gb['display_format'].replace("'W'", "'هفته '"))
+                        else:
                             label = babel.dates.format_datetime(
                                 value, format=gb['display_format'],
                                 tzinfo=tzinfo, locale=locale
-                            )
+                                )
+                    else:
+                        if locale == 'fa_IR':
+                            label = value.aslocale(locale).format_datetime(
+                                gb['display_format'].replace("'W'", "'هفته '"))
                         else:
                             label = babel.dates.format_date(
                                 value, format=gb['display_format'],
