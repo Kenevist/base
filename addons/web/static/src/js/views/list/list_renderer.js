@@ -8,6 +8,7 @@ var dom = require('web.dom');
 var field_utils = require('web.field_utils');
 var Pager = require('web.Pager');
 var utils = require('web.utils');
+var pu = require('web.persian_utils');
 
 var _t = core._t;
 
@@ -440,7 +441,7 @@ var ListRenderer = BasicRenderer.extend({
         }
         var $th = $('<th>')
             .addClass('o_group_name')
-            .text(name + ' (' + group.count + ')');
+            .text(name + ' (' + pu.autoPersianDigitFormat(group.count) + ')');
         if (this.hasSelectors) {
             $th.attr('colspan', HEADING_COLUMNS_TO_SKIP_IN_GROUPS);
         }
