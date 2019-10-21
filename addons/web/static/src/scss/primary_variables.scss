@@ -9,32 +9,32 @@ $o-font-size-base: 13rem * (1px / $o-root-font-size);
 $o-line-height-base: 1.5; // This is BS default
 
 // Colors
-$o-community-color: #7C7BAD;
-$o-enterprise-color: #875A7B;
-$o-enterprise-primary-color: #00A09D;
+$o-community-color: #AF2626;
+$o-enterprise-color: #8B2A19;
+$o-enterprise-primary-color: #555C5F;
 
 $o-brand-odoo: $o-community-color;
 $o-brand-primary: $o-community-color;
 
-$o-brand-secondary: #f0eeee;
+$o-brand-secondary: #FBFBF7;
 $o-brand-lightsecondary: #e2e2e0;
 $o-gray-100: #f8f9fa; // This is BS default
 
-$o-main-color-muted: #a8a8a8;
-$o-main-text-color: #4c4c4c;
+$o-main-color-muted: #ABABA7;
+$o-main-text-color: #2E3532;
 
-$o-view-background-color: white;
-$o-shadow-color: #303030;
+$o-view-background-color: #FBFBF7;
+$o-shadow-color: #30302A;
 
-$o-form-lightsecondary: #ccc;
+$o-form-lightsecondary: #C0C0BA;
 
-$o-list-footer-bg-color: #eee;
+$o-list-footer-bg-color: #E0E0DA;
 $o-list-footer-font-weight: bold;
 
-$o-tooltip-background-color: black;
-$o-tooltip-color: white;
-$o-tooltip-arrow-color: black;
-$o-tooltip-text-color: #777777;
+$o-tooltip-background-color: #2E3532;
+$o-tooltip-color: #FBFBF7;
+$o-tooltip-arrow-color: #2E3532;
+$o-tooltip-text-color: #77777A;
 $o-tooltip-title-text-color: #4c4c4c;
 
 // Layout
@@ -86,7 +86,7 @@ $o-base-settings-mobile-tabs-overflow-gap: 3%;
 
 $o-cp-breadcrumb-height: 30px;
 
-$o-datepicker-week-color: #8f8f8f;
+$o-datepicker-week-color: #8f8f8b;
 
 // Kanban
 
