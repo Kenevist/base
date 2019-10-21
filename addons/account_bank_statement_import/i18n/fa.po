@@ -41,7 +41,7 @@ msgstr "%d تراکنش قبلاً وارد شده و نادیده گرفته ش
 #: code:addons/account_bank_statement_import/account_bank_statement_import.py:236
 #, python-format
 msgid "1 transaction had already been imported and was ignored."
-msgstr "1 تراکنش قبلا وارد شده و نادیده گرفته شد."
+msgstr "۱ تراکنش قبلا وارد شده و نادیده گرفته شد."
 
 #. module: account_bank_statement_import
 #: sql_constraint:account.bank.statement.line:0

@@ -12,9 +12,9 @@
 # Zahed Alfak <tamass4116@gmail.com>, 2018
 # Hamid Darabi, 2018
 # Martin Trigaux, 2018
+# Hamed Mohammadi <hamed@dehongi.com>, 2018
 # Arash Sardari <arashss77@gmail.com>, 2018
 # سید محمد آذربرا <mohammadazarbara98@gmail.com>, 2019
-# Hamed Mohammadi <hamed@dehongi.com>, 2019
 # 
 msgid ""
 msgstr ""
@@ -22,7 +22,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-22 11:56+0000\n"
 "PO-Revision-Date: 2018-08-24 09:14+0000\n"
-"Last-Translator: Hamed Mohammadi <hamed@dehongi.com>, 2019\n"
+"Last-Translator: سید محمد آذربرا <mohammadazarbara98@gmail.com>, 2019\n"
 "Language-Team: Persian (https://www.transifex.com/odoo/teams/41243/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -5031,22 +5031,22 @@ msgstr "%B - نام کامل ماه.\""
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_lang_form
 msgid "%H - Hour (24-hour clock) [00,23].\""
-msgstr "%H - ساعت (ساعت 24 ساعته) [00,23].\""
+msgstr "%H - ساعت (ساعت ۲۴ ساعته) [۰۰,۲۳].\""
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_lang_form
 msgid "%I - Hour (12-hour clock) [01,12].\""
-msgstr "%H - ساعت (ساعت 12 ساعته) [01,12].\""
+msgstr "%H - ساعت (ساعت ۱۲ ساعته) [۰۱,۱۲].\""
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_lang_form
 msgid "%M - Minute [00,59].\""
-msgstr "%M - دقیقه [00,59].\""
+msgstr "%M - دقیقه [۰۰,۵۹].\""
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_lang_form
 msgid "%S - Seconds [00,61].\""
-msgstr "%S - ثانیه [00,61].\""
+msgstr "%S - ثانیه [۰۰,۶۱].\""
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_lang_form
@@ -5066,17 +5066,17 @@ msgstr "%b - نام اختصاری ماه"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_lang_form
 msgid "%d - Day of the month [01,31].\""
-msgstr "%d - روز در ماه [01,31].\""
+msgstr "%d - روز در ماه [۰۱,۳۱].\""
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_lang_form
 msgid "%j - Day of the year [001,366].\""
-msgstr "%j - روز در سال [001,366].\""
+msgstr "%j - روز در سال [۰۰۱,۳۶۶].\""
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_lang_form
 msgid "%m - Month number [01,12].\""
-msgstr "%m - شماره ماه [01,12].\""
+msgstr "%m - شماره ماه [۰۱,۱۲].\""
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_lang_form
@@ -5101,7 +5101,7 @@ msgstr ""
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_lang_form
 msgid "%y - Year without century [00,99].\""
-msgstr "%y - سال بدون صده [00,99].\""
+msgstr "%y - سال بدون صده [۰۰,۹۹].\""
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.module_view_kanban
@@ -5967,52 +5967,52 @@ msgstr "یک کاربر به مخاطب مربوط شده است"
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "A0  5   841 x 1189 mm"
-msgstr "A0  5   841 x 1189 mm"
+msgstr "A0  5   ۸۴۱ x ۱۱۸۹ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "A1  6   594 x 841 mm"
-msgstr "A1  6   594 x 841 mm"
+msgstr "A1  6   ۵۹۴ x ۸۴۱ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "A2  7   420 x 594 mm"
-msgstr "A2  7   420 x 594 mm"
+msgstr "A2  7   ۴۲۰ x ۵۹۴ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "A3  8   297 x 420 mm"
-msgstr "A3  8   297 x 420 mm"
+msgstr "A3  8   ۲۹۷ x ۴۲۰ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "A4  0   210 x 297 mm, 8.26 x 11.69 inches"
-msgstr "A4  0   210 x 297 mm, 8.26 x 11.69 inches"
+msgstr "A4  0   ۲۱۰ x ۲۹۷ میلیمتر, ۸.۲۶ x ۱۱.۶۹ اینچ"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "A5  9   148 x 210 mm"
-msgstr "A5  9   148 x 210 mm"
+msgstr "A5  9   ۱۴۸ x ۲۱۰ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "A6  10  105 x 148 mm"
-msgstr "A6  10  105 x 148 mm"
+msgstr "A6  10  ۱۰۵ x ۱۴۸ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "A7  11  74 x 105 mm"
-msgstr "A7  11  74 x 105 mm"
+msgstr "A7  11  ۷۴ x ۱۰۵ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "A8  12  52 x 74 mm"
-msgstr "A8  12  52 x 74 mm"
+msgstr "A8  12  ۵۲ x ۷۴ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "A9  13  37 x 52 mm"
-msgstr "A9  13  37 x 52 mm"
+msgstr "A9  13  ۳۷ x ۵۲ میلیمتر"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_l10n_au_aba
@@ -7096,7 +7096,7 @@ msgstr "ویزارد ادغام خودکار"
 #. module: base
 #: model:ir.model,name:base.model_ir_autovacuum
 msgid "Automatic Vacuum"
-msgstr "خلاء اتوماتیک"
+msgstr ""
 
 #. module: base
 #: code:addons/base/models/ir_module.py:725
@@ -7141,12 +7141,12 @@ msgstr ""
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "B0  14  1000 x 1414 mm"
-msgstr "B0  14  1000 x 1414 mm"
+msgstr "B0  14  ۱۰۰۰ x ۱۴۱۴ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "B1  15  707 x 1000 mm"
-msgstr "B1  15  707 x 1000 mm"
+msgstr "B1  15  ۷۰۷ x ۱۰۰۰ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
@@ -7156,12 +7156,12 @@ msgstr ""
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "B2  17  500 x 707 mm"
-msgstr "B2  17  500 x 707 mm"
+msgstr "B2  17  ۵۰۰ x ۷۰۷ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "B3  18  353 x 500 mm"
-msgstr "B3  18  353 x 500 mm"
+msgstr "B3  18  ۳۵۳ x ۵۰۰ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
@@ -7171,27 +7171,27 @@ msgstr "B4  19  250 x 353 mm"
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "B5  1   176 x 250 mm, 6.93 x 9.84 inches"
-msgstr "B5  1   176 x 250 mm, 6.93 x 9.84 inches"
+msgstr "B5  1   ۱۷۶ x ۲۵۰ میلیمتر, ۶.۹۳ x ۹.۸۴ اینچ"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "B6  20  125 x 176 mm"
-msgstr "B6  20  125 x 176 mm"
+msgstr "B6  20  ۱۲۵ x ۱۷۶ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "B7  21  88 x 125 mm"
-msgstr "B7  21  88 x 125 mm"
+msgstr "B7  21  ۸۸ x ۱۲۵ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "B8  22  62 x 88 mm"
-msgstr "B8  22  62 x 88 mm"
+msgstr "B8  22  ۶۲ x ۸۸ میلیمتر"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "B9  23  33 x 62 mm"
-msgstr "B9  23  33 x 62 mm"
+msgstr "B9  23  ۳۳ x ۶۲ میلیمتر"
 
 #. module: base
 #: code:addons/translate.py:1076
@@ -7302,12 +7302,6 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,summary:base.module_barcodes_mobile
 msgid "Barcode scan in Mobile"
-msgstr ""
-
-#. module: base
-#: code:addons/base/models/ir_qweb_fields.py:607
-#, python-format
-msgid "Barcode symbology"
 msgstr ""
 
 #. module: base
@@ -7707,7 +7701,7 @@ msgstr ""
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "C5E 24  163 x 229 mm"
-msgstr "C5E 24  163 x 229 mm"
+msgstr "C5E 24  ۱۶۳ x ۲۲۹ میلیمتر"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_crm
@@ -7919,7 +7913,7 @@ msgstr "تغییر ترجیحات من"
 #: model:ir.actions.act_window,name:base.change_password_wizard_action
 #: model_terms:ir.ui.view,arch_db:base.change_password_wizard_view
 msgid "Change Password"
-msgstr "تغییر کلمه عبور"
+msgstr "تغییر گذرواژه"
 
 #. module: base
 #: model:ir.model,name:base.model_change_password_wizard
@@ -8253,12 +8247,12 @@ msgstr "رنگ پس زمینه"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_model_fields__column1
 msgid "Column 1"
-msgstr "ستون 1"
+msgstr "ستون ۱"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_model_fields__column2
 msgid "Column 2"
-msgstr "ستون 2"
+msgstr "ستون ۲"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_model_fields__column2
@@ -8473,7 +8467,7 @@ msgstr ""
 #. module: base
 #: model:ir.model,name:base.model_res_config_settings
 msgid "Config Settings"
-msgstr "تنظیمات پیکربندی"
+msgstr ""
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.config_wizard_step_view_form
@@ -9318,7 +9312,7 @@ msgstr ""
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "DLE 26 110 x 220 mm"
-msgstr "DLE 26 110 x 220 mm"
+msgstr "DLE 26 ۱۱۰ x ۲۲۰ میلیمتر"
 
 #. module: base
 #: selection:ir.actions.act_window.view,view_mode:0
@@ -10512,7 +10506,7 @@ msgstr "اجرا"
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "Executive 4   7.5 x 10 inches, 190.5 x 254 mm"
-msgstr "Executive 4   7.5 x 10 inches, 190.5 x 254 mm"
+msgstr "Executive 4   ۷.۵ x ۱۰ اینچ, ۱۹۰.۵ x ۲۵۴ میلیمتر"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_hr_expense
@@ -11130,7 +11124,7 @@ msgstr "مالی/بیمه"
 #. module: base
 #: model:ir.module.module,summary:base.module_web_unsplash
 msgid "Find free high-resolution images from Unsplash"
-msgstr "تصاویر با وضوح بالا را از Unsplash پیدا کنید"
+msgstr ""
 
 #. module: base
 #: selection:base.partner.merge.automatic.wizard,state:0
@@ -11160,7 +11154,7 @@ msgstr "شناور"
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "Folio 27  210 x 330 mm"
-msgstr "Folio 27  210 x 330 mm"
+msgstr "Folio 27  ۲۱۰ x ۳۳۰ میلیمتر"
 
 #. module: base
 #: model:ir.model,name:base.model_format_address_mixin
@@ -11407,12 +11401,12 @@ msgstr ""
 #. module: base
 #: selection:ir.module.module,license:0
 msgid "GPL Version 2"
-msgstr "GPL Version 2"
+msgstr "GPL Version ۲"
 
 #. module: base
 #: selection:ir.module.module,license:0
 msgid "GPL Version 3"
-msgstr "GPL Version 3"
+msgstr "GPL Version ۳"
 
 #. module: base
 #: selection:ir.module.module,license:0
@@ -11904,7 +11898,7 @@ msgstr "HTML"
 #. module: base
 #: model:ir.model,name:base.model_ir_http
 msgid "HTTP Routing"
-msgstr "مسیریابی HTTP"
+msgstr ""
 
 #. module: base
 #: model:res.country,name:base.ht
@@ -13762,12 +13756,12 @@ msgstr "لبنان"
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "Ledger  28  431.8 x 279.4 mm"
-msgstr "Ledger  28  431.8 x 279.4 mm"
+msgstr "Ledger  28  ۴۳۱.۸ x ۲۷۹.۴ میلیمتر"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_report_paperformat__margin_left
 msgid "Left Margin (mm)"
-msgstr "حاشیه چپ (mm)"
+msgstr "حاشیه چپ (میلیمتر)"
 
 #. module: base
 #: selection:res.lang,direction:0
@@ -13777,7 +13771,7 @@ msgstr "چپ به راست"
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "Legal    3   8.5 x 14 inches, 215.9 x 355.6 mm"
-msgstr "Legal    3   8.5 x 14 inches, 215.9 x 355.6 mm"
+msgstr "Legal    3   ۸.۵ x ۱۴ اینچ, ۲۱۵.۹ x ۳۵۵.۶ میلیمتر"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.sequence_view
@@ -13809,12 +13803,12 @@ msgstr ""
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.onboarding_company_step
 msgid "Let's start!"
-msgstr "بیا شروع کنیم!"
+msgstr "شروع کنیم!"
 
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "Letter 2 8.5 x 11 inches, 215.9 x 279.4 mm"
-msgstr "Letter 2 8.5 x 11 inches, 215.9 x 279.4 mm"
+msgstr "Letter 2 ۸.۵ x ۱۱ اینچ, ۲۱۵.۹ x ۲۷۹.۴ میلیمتر"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_logging__level
@@ -14620,7 +14614,7 @@ msgstr "سرور SMTP وجود ندارد"
 #: code:addons/models.py:3028
 #, python-format
 msgid "Missing document(s)"
-msgstr "پرونده (ها) موجود نیست"
+msgstr "پرونده  موجود نیست"
 
 #. module: base
 #: code:addons/models.py:5505
@@ -15567,7 +15561,7 @@ msgstr ""
 #. module: base
 #: selection:ir.module.module,license:0
 msgid "Odoo Enterprise Edition License v1.0"
-msgstr "گواهی نسخه سازمانی اودو نسخه v1.0"
+msgstr "گواهی نسخه سازمانی اودو نسخه v۱.۰"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_module_module__to_buy
@@ -17024,12 +17018,12 @@ msgstr ""
 #. module: base
 #: model:ir.model.fields,field_description:base.field_report_paperformat__page_height
 msgid "Page height (mm)"
-msgstr "ارتفاع صفحه (mm)"
+msgstr "ارتفاع صفحه (میلیمتر)"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_report_paperformat__page_width
 msgid "Page width (mm)"
-msgstr "عرض صفحه (mm)"
+msgstr "عرض صفحه (میلیمتر)"
 
 #. module: base
 #: model:res.country,name:base.pk
@@ -18007,7 +18001,7 @@ msgstr ""
 #. module: base
 #: model:ir.model,name:base.model_ir_qweb_field_image
 msgid "Qweb Field Image"
-msgstr "تصویر فیلد کیو وب"
+msgstr ""
 
 #. module: base
 #: model:ir.model,name:base.model_ir_qweb_field_integer
@@ -18443,7 +18437,7 @@ msgstr "محدود کردن به لیستها"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_report_paperformat__margin_right
 msgid "Right Margin (mm)"
-msgstr "حاشیه راست (mm)"
+msgstr "حاشیه راست (میلیمتر)"
 
 #. module: base
 #: selection:res.lang,direction:0
@@ -19124,7 +19118,7 @@ msgstr "تنظیم به NULL"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_users__new_password
 msgid "Set Password"
-msgstr "ایجاد کلمه عبور"
+msgstr "ایجاد گذرواژه"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.config_wizard_step_view_form
@@ -19160,7 +19154,7 @@ msgstr ""
 #: code:addons/base/models/res_users.py:656
 #, python-format
 msgid "Setting empty passwords is not allowed for security reasons!"
-msgstr "به دلایل امنیتی کلمه عبور نمیتواند خالی باشد!"
+msgstr "به دلایل امنیتی گذرواژه نمیتواند خالی باشد!"
 
 #. module: base
 #: model:ir.actions.act_window,name:base.res_config_setting_act_window
@@ -19633,7 +19627,7 @@ msgstr "خیابان"
 #: model_terms:ir.ui.view,arch_db:base.view_partner_short_form
 #: model_terms:ir.ui.view,arch_db:base.view_res_bank_form
 msgid "Street 2..."
-msgstr "خیابان 2 ..."
+msgstr "خیابان ۲ ..."
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_partner_view_form_private
@@ -19848,7 +19842,7 @@ msgstr ""
 #. module: base
 #: selection:report.paperformat,format:0
 msgid "Tabloid 29 279.4 x 431.8 mm"
-msgstr "Tabloid 29 279.4 x 431.8 mm"
+msgstr "Tabloid 29 ۲۷۹.۴ x ۴۳۱.۸ میلیمتر"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_res_partner_filter
@@ -20925,12 +20919,12 @@ msgstr ""
 #. module: base
 #: model:ir.model.fields,help:base.field_res_currency_rate__rate
 msgid "The rate of the currency to the currency of rate 1"
-msgstr "The rate of the currency to the currency of rate 1"
+msgstr "The rate of the currency to the currency of rate ۱"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_currency__rate
 msgid "The rate of the currency to the currency of rate 1."
-msgstr "نرخ ارز به ارز با نرخ 1."
+msgstr "نرخ ارز به ارز با نرخ ۱."
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_attachment__res_id
@@ -20967,7 +20961,7 @@ msgstr ""
 #. module: base
 #: sql_constraint:res.currency:0
 msgid "The rounding factor must be greater than 0!"
-msgstr "ضریب گرد کردن باید بزرگتر از 0 باشد!"
+msgstr "ضریب گرد کردن باید بزرگتر از ۰ باشد!"
 
 #. module: base
 #: code:addons/base/models/ir_mail_server.py:170
@@ -21185,7 +21179,7 @@ msgstr "جداساز هزارگان"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_attachment__thumbnail
 msgid "Thumbnail"
-msgstr "بند انگشتی"
+msgstr ""
 
 #. module: base
 #: selection:res.lang,week_start:0
@@ -21345,7 +21339,7 @@ msgstr "ابزار‌ها"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_report_paperformat__margin_top
 msgid "Top Margin (mm)"
-msgstr "حاشیه بالا (mm)"
+msgstr "حاشیه بالا (میلیمتر)"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_model__count
@@ -21850,7 +21844,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_web_unsplash
 msgid "Unsplash Image Library"
-msgstr "آن اسپلش کتابخانه تصویر"
+msgstr ""
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_translation_search
@@ -21965,7 +21959,7 @@ msgstr "کاربرد"
 #: code:addons/base/models/ir_fields.py:167
 #, python-format
 msgid "Use '1' for yes and '0' for no"
-msgstr "استفاده از '1' برای بله و '0' برای خیر"
+msgstr "استفاده از '۱' برای بله و '۰' برای خیر"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_partner__barcode

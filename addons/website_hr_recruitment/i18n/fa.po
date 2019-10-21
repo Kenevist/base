@@ -6,7 +6,7 @@
 # Martin Trigaux, 2018
 # Hamid Darabi, 2018
 # Sahar Daraye <sahar.daraye.1369@gmail.com>, 2018
-# Hamed Mohammadi <hamed@dehongi.com>, 2019
+# Hamed Mohammadi <hamed@dehongi.com>, 2018
 # 
 msgid ""
 msgstr ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 10:32+0000\n"
 "PO-Revision-Date: 2018-08-24 09:34+0000\n"
-"Last-Translator: Hamed Mohammadi <hamed@dehongi.com>, 2019\n"
+"Last-Translator: Hamed Mohammadi <hamed@dehongi.com>, 2018\n"
 "Language-Team: Persian (https://www.transifex.com/odoo/teams/41243/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,23 +30,23 @@ msgstr "$15k"
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "10  / 40 people"
-msgstr "10  / 40 فرد"
+msgstr "۱۰  / ۴۰ فرد"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "3 months"
-msgstr "3 ماه"
+msgstr "۳ ماه"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "50% YoY"
-msgstr "50% YoY"
+msgstr "۵۰% YoY"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.thankyou_ir_ui_view
 #: model_terms:website.page,arch_db:website_hr_recruitment.thankyou
 msgid "<br/><i class=\"fa fa-phone\" role=\"img\" aria-label=\"Phone\" title=\"Phone\"/>"
-msgstr "<br/><i class=\"fa fa-phone\" role=\"img\" aria-label=\"Phone\" title=\"تلفن\"/>"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.index
@@ -54,14 +54,12 @@ msgid ""
 "<i class=\"fa fa-clock-o\" title=\"Publication date\" role=\"img\" aria-"
 "label=\"Publication date\"/>"
 msgstr ""
-"<i class=\"fa fa-clock-o\" title=\"تاریخ انتشار\" role=\"img\" aria-"
-"label=\"Publication date\"/>"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.thankyou_ir_ui_view
 #: model_terms:website.page,arch_db:website_hr_recruitment.thankyou
 msgid "<i class=\"fa fa-envelope\" role=\"img\" aria-label=\"Email\" title=\"Email\"/>"
-msgstr "<i class=\"fa fa-envelope\" role=\"img\" aria-label=\"Email\" title=\"ایمیل\"/>"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -69,8 +67,6 @@ msgid ""
 "<span class=\"fa fa-2x fa-calendar\"/>\n"
 "                    Sponsored Events"
 msgstr ""
-"<span class=\"fa fa-2x fa-calendar\"/>\n"
-"                    رویداد های پشتیبانی شده"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -78,8 +74,6 @@ msgid ""
 "<span class=\"fa fa-2x fa-car\"/>\n"
 "                    Save on commute"
 msgstr ""
-"<span class=\"fa fa-2x fa-car\"/>\n"
-"                    صرفه جویی در مسافرت"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -87,8 +81,6 @@ msgid ""
 "<span class=\"fa fa-2x fa-check-circle\"/>\n"
 "                    Discount Programs"
 msgstr ""
-"<span class=\"fa fa-2x fa-check-circle\"/>\n"
-"                    برنامه های تخفیف"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -96,8 +88,6 @@ msgid ""
 "<span class=\"fa fa-2x fa-coffee\"/>\n"
 "                    Eat &amp; Drink"
 msgstr ""
-"<span class=\"fa fa-2x fa-coffee\"/>\n"
-"                    بخور &amp; بیاشام"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -105,8 +95,6 @@ msgid ""
 "<span class=\"fa fa-2x fa-futbol-o\"/>\n"
 "                    Sport Activity"
 msgstr ""
-"<span class=\"fa fa-2x fa-futbol-o\"/>\n"
-"                    فعالیت ورزشی"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -114,8 +102,6 @@ msgid ""
 "<span class=\"fa fa-2x fa-heart\"/>\n"
 "                    Benefits"
 msgstr ""
-"<span class=\"fa fa-2x fa-heart\"/>\n"
-"                    مزایا"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -123,8 +109,6 @@ msgid ""
 "<span class=\"fa fa-2x fa-map-marker\"/>\n"
 "                    Prime location"
 msgstr ""
-"<span class=\"fa fa-2x fa-map-marker\"/>\n"
-"                    مکان ویژه"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -132,8 +116,6 @@ msgid ""
 "<span class=\"fa fa-2x fa-sun-o\"/>\n"
 "                    PTOs"
 msgstr ""
-"<span class=\"fa fa-2x fa-sun-o\"/>\n"
-"                    PTO ها"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.thankyou_ir_ui_view
@@ -144,10 +126,6 @@ msgid ""
 "                                            Feel free to contact him/her if you have further questions.\n"
 "                                        </span>"
 msgstr ""
-"<span>\n"
-"                                            ما معمولا بین یک تا سه روز جواب می‌دهیم.<br/>\n"
-"                                            اگر سوالی دارید لطفا با او در تماس باشید.\n"
-"                                        </span>"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -215,8 +193,6 @@ msgid ""
 "Brand-name product and services in categories like travel, electronics, "
 "health, fitness, cellular, and more"
 msgstr ""
-"محصولات و خدمات با مارک تجاری در دسته هایی مانند مسافرت ، الکترونیک ، بهداشت"
-" ، تناسب اندام ، تلفن همراه و غیر"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -226,7 +202,7 @@ msgstr "رشد شرکت:"
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "Company Maturity:"
-msgstr "بلوغ شرکت:"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.thankyou_ir_ui_view
@@ -250,15 +226,13 @@ msgstr "ادامه در وبسایت ما"
 msgid ""
 "Create new job pages from the <strong><i>+New</i></strong> top-right button."
 msgstr ""
-"یک صفحه شغل جدید با کلیک بر <strong><i>+جدید</i></strong> گوشه بالا چپ ایجاد"
-" کنید."
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid ""
 "Direct coordination with functional consultants for qualification and follow"
 " ups"
-msgstr "هماهنگی مستقیم با مشاوران عملکردی برای صلاحیت و پیگیری های لازم"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -271,8 +245,6 @@ msgid ""
 "Healthcare, dental, vision, life insurance, Flexible Spending Account (FSA),"
 " Health Savings Account (HSA)"
 msgstr ""
-"بهداشت ، دندانپزشکی ، بینایی ، بیمه عمر ، حساب هزینه انعطاف پذیر (FSA) ، "
-"حساب پس انداز بهداشت (HSA)"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -283,7 +255,7 @@ msgstr "کمیسیون بالا برای عملکرد خوب"
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.thankyou_ir_ui_view
 #: model_terms:website.page,arch_db:website_hr_recruitment.thankyou
 msgid "In the meantime,"
-msgstr "در عین حال،"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.apply
@@ -325,7 +297,7 @@ msgstr "شغل"
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.index
 msgid "Join us and help disrupt the enterprise market!"
-msgstr "به ما بپیوندید و به مختل کردن بازار سازمانی کمک کنید!"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.index
@@ -334,17 +306,12 @@ msgid ""
 "                                    develop and to be part of an exciting experience and\n"
 "                                    team."
 msgstr ""
-"به ما بپیوندید ما فرصت غیر عادی برای یادگیری برای\n"
-"                                    توسعه و بودن بخشی از یک تجربه هیجان انگیز و تیم\n"
-"                                    ارائه می کنیم."
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid ""
 "Large apps scope: CRM, MRP, Accounting, Inventory, HR, Project Mgt, etc."
 msgstr ""
-"دامنه برنامه های بزرگ: CRM ، MRP ، حسابداری ، موجودی ، منابع انسانی ، پروژه "
-"Mgt و غیره."
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.thankyou_ir_ui_view
@@ -361,8 +328,6 @@ msgstr "نیازمند اطلاعات بیشتر؟"
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "No outbound calls, you get leads and focus on providing value to them"
 msgstr ""
-"بدون تماس های برون مرزی ، شما هدایت می کنید و بر ارائه ارزش برای آنها تمرکز "
-"می کنید"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -370,8 +335,6 @@ msgid ""
 "Only a couple blocs from BART, Caltrain, Highway 101, carpool pickup, and "
 "Bay Bridge."
 msgstr ""
-"فقط چند بلوک از BART ، Caltrain ، Highway 101 ، وانت Carpool و Bay Bridge "
-"وجود دارد."
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.index
@@ -381,35 +344,32 @@ msgstr "پیشنهادات کاری ما"
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "Overachieving Possibilities:"
-msgstr "امکانات بیش از حد:"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "Peet's and Philz coffee provided all day to order and pantry snacks"
 msgstr ""
-"قهوه Peet و Philz تمام روز را برای سفارش و میان وعده های شیرین فروشی فراهم "
-"کردند"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "Personal Evolution:"
-msgstr "تکامل شخصی:"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "Play any sport with colleagues and the bill is covered"
-msgstr "هر ورزشی را با همکاران بازی کنید و صورتحساب آن پوشانده شده است"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "Pre-tax commuter benefitsbr <br/>(parking and transit)"
 msgstr ""
-"مسافر قبل از مالیات مزایای استفاده از خدمات مسافرتی <br/>(پارکینگ و ترانزیت)"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "Profitable"
-msgstr "سودآور"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.apply
@@ -435,11 +395,6 @@ msgid ""
 "                qualification to the negotiation, going through astonishing\n"
 "                product demos."
 msgstr ""
-"خلاصه ای کوتاه از شغل: یک سغل فروش برای افراد باهوش و می تواند\n"
-"                کارهای مدیریتی صنعت را سریع یاد بگید. شما مسئول \n"
-"                کل چرخه فروش خواهید بود، از یافتن فرصتها تا\n"
-"                ازریابی مذاکرات و رفتن به سمت نمایش خیره کننده\n"
-"                محصولات."
 
 #. module: website_hr_recruitment
 #: model:ir.model,name:website_hr_recruitment.model_hr_recruitment_source
@@ -470,7 +425,7 @@ msgstr "داستان بنیان گذار"
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid ""
 "Tuesday Dinners, Monthly Lunch Mixers, Monthly Happy Hour, Annual day event"
-msgstr "سه شنبه شام ، میکسر ناهار ماهانه ، ماه مبارک ساعت ، رویداد روزانه"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -480,22 +435,22 @@ msgstr "محدوده آمریکا و کانادا"
 #. module: website_hr_recruitment
 #: model:ir.model.fields,field_description:website_hr_recruitment.field_hr_recruitment_source__url
 msgid "Url Parameters"
-msgstr "پارامترهای Url"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "Vacation, Sick, and paid leaves"
-msgstr "تعطیلات ، بیمار و برگهای پرداخت شده"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "Variability of the Job:"
-msgstr "تغییر کار:"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.hr_job_website_inherit
 msgid "Website Editor"
-msgstr "ویرایشگر وبسایت"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model:ir.actions.act_url,name:website_hr_recruitment.action_open_website
@@ -518,8 +473,6 @@ msgid ""
 "You sell management software to directors of SMEs: interesting projects and "
 "people"
 msgstr ""
-"شما نرم افزارهای مدیریتی را به مدیران شرکتهای SMEs می فروشید: پروژه های جالب"
-" و افراد"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.apply
@@ -546,12 +499,12 @@ msgstr "درخواست شما با موفقیت ارسال شد."
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.thankyou_ir_ui_view
 #: model_terms:website.page,arch_db:website_hr_recruitment.thankyou
 msgid "Your application has been sent to:"
-msgstr "درخواست شما ارسال شد به:"
+msgstr "درخواست شما ارسال شد بهک"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.index
 msgid "for job opportunities."
-msgstr "برای موقعیتهای شغلی."
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.index
