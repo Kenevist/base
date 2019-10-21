@@ -6,16 +6,15 @@
 # Martin Trigaux, 2018
 # Hamid Darabi, 2018
 # elaheh pourrezaie <elaheh.pourrezaie@hotmail.com>, 2018
+# Hamed Mohammadi <hamed@dehongi.com>, 2018
 # Sepehr Khoshnood <sepehr.kho@gmail.com>, 2018
-# Hamed Mohammadi <hamed@dehongi.com>, 2019
-# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~11.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-21 13:17+0000\n"
-"PO-Revision-Date: 2018-08-24 09:15+0000\n"
-"Last-Translator: Hamed Mohammadi <hamed@dehongi.com>, 2019\n"
+"PO-Revision-Date: 2018-09-21 13:17+0000\n"
+"Last-Translator: Sepehr Khoshnood <sepehr.kho@gmail.com>, 2018\n"
 "Language-Team: Persian (https://www.transifex.com/odoo/teams/41243/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,18 +26,18 @@ msgstr ""
 #: code:addons/account_check_printing/models/account_journal.py:58
 #, python-format
 msgid " : Check Number Sequence"
-msgstr "\\: کنترل توالی شماره"
+msgstr ": مولد شماره چک"
 
 #. module: account_check_printing
 #: code:addons/account_check_printing/models/account_payment.py:63
 #, python-format
 msgid "A check memo cannot exceed 60 characters."
-msgstr ""
+msgstr "شرح چک نمی‌تواند بیش از ۶۰ حرف باشد."
 
 #. module: account_check_printing
 #: model:ir.model,name:account_check_printing.model_account_chart_template
 msgid "Account Chart Template"
-msgstr ""
+msgstr "الگوی جدول حساب"
 
 #. module: account_check_printing
 #: model:ir.model.fields,help:account_check_printing.field_res_company__account_check_printing_margin_left
@@ -50,7 +49,7 @@ msgstr ""
 msgid ""
 "Adjust the margins of generated checks to make it fit your printer's "
 "settings."
-msgstr ""
+msgstr "حاشیه‌های اطراف چک را تنظیم کنید تا با چاپگر شما همخوانی پیدا کند."
 
 #. module: account_check_printing
 #: model:ir.model.fields,field_description:account_check_printing.field_account_payment__check_amount_in_words
@@ -67,13 +66,13 @@ msgstr "لغو"
 #: model:ir.model.fields,field_description:account_check_printing.field_res_company__account_check_printing_layout
 #: model:ir.model.fields,field_description:account_check_printing.field_res_config_settings__account_check_printing_layout
 msgid "Check Layout"
-msgstr ""
+msgstr "چیدمان چک"
 
 #. module: account_check_printing
 #: model:ir.model.fields,field_description:account_check_printing.field_res_company__account_check_printing_margin_left
 #: model:ir.model.fields,field_description:account_check_printing.field_res_config_settings__account_check_printing_margin_left
 msgid "Check Left Margin"
-msgstr ""
+msgstr "حاشیه سمت جپ جک"
 
 #. module: account_check_printing
 #: model:ir.model.fields,field_description:account_check_printing.field_account_payment__check_number
@@ -89,61 +88,61 @@ msgstr "چاپ چک"
 #. module: account_check_printing
 #: model:ir.model.fields,field_description:account_check_printing.field_account_journal__check_printing_payment_method_selected
 msgid "Check Printing Payment Method Selected"
-msgstr "روش پرداخت پرینت چک انتخاب شده است"
+msgstr "روش پرداخت چک انتخاب شده است"
 
 #. module: account_check_printing
 #: model:ir.model.fields,field_description:account_check_printing.field_res_config_settings__account_check_printing_margin_right
 msgid "Check Right Margin"
-msgstr ""
+msgstr "حاشیه سمت راست چک"
 
 #. module: account_check_printing
 #: model:ir.model.fields,field_description:account_check_printing.field_account_journal__check_sequence_id
 msgid "Check Sequence"
-msgstr ""
+msgstr "مولد شماره چک"
 
 #. module: account_check_printing
 #: model:ir.model.fields,field_description:account_check_printing.field_res_company__account_check_printing_margin_top
 #: model:ir.model.fields,field_description:account_check_printing.field_res_config_settings__account_check_printing_margin_top
 msgid "Check Top Margin"
-msgstr ""
+msgstr "حاشیه بالای چک"
 
 #. module: account_check_printing
 #: model:ir.model.fields,help:account_check_printing.field_account_journal__check_manual_sequencing
 #: model:ir.model.fields,help:account_check_printing.field_account_payment__check_manual_sequencing
 #: model:ir.model.fields,help:account_check_printing.field_account_register_payments__check_manual_sequencing
 msgid "Check this option if your pre-printed checks are not numbered."
-msgstr ""
+msgstr "در صورتی که چک ‌ها فاقد شماره از پیش چاپ شده هستند، این گزینه را انتخاب نمایید."
 
 #. module: account_check_printing
 #: model_terms:ir.ui.view,arch_db:account_check_printing.account_journal_dashboard_kanban_view_inherited
 msgid "Check to print"
-msgstr "چک برای پرینت"
+msgstr "چک چاپ نشده"
 
 #. module: account_check_printing
 #: model:account.payment.method,name:account_check_printing.account_payment_method_check
 msgid "Checks"
-msgstr "چکها"
+msgstr "چک"
 
 #. module: account_check_printing
 #: model_terms:ir.ui.view,arch_db:account_check_printing.view_payment_check_printing_search
 msgid "Checks To Print"
-msgstr "چکهای برای پرینت"
+msgstr "چک‌های چاپ نشده"
 
 #. module: account_check_printing
 #: model:ir.model.fields,help:account_check_printing.field_account_journal__check_sequence_id
 msgid "Checks numbering sequence."
-msgstr ""
+msgstr "مولد شماره چک"
 
 #. module: account_check_printing
 #: code:addons/account_check_printing/models/account_journal.py:97
 #, python-format
 msgid "Checks to Print"
-msgstr "چکهای برای پرینت"
+msgstr "چک‌های چاپ نشده"
 
 #. module: account_check_printing
 #: model_terms:ir.ui.view,arch_db:account_check_printing.account_journal_dashboard_kanban_view_inherited
 msgid "Checks to print"
-msgstr "چکهای برای پرینت"
+msgstr "چک‌های چاپ نشده"
 
 #. module: account_check_printing
 #: model:ir.model,name:account_check_printing.model_res_company
@@ -153,12 +152,12 @@ msgstr "شرکت‌ها"
 #. module: account_check_printing
 #: model:ir.model.fields,field_description:account_check_printing.field_res_config_settings__country_code
 msgid "Company Country code"
-msgstr ""
+msgstr "کد کشور شرکت"
 
 #. module: account_check_printing
 #: model:ir.model,name:account_check_printing.model_res_config_settings
 msgid "Config Settings"
-msgstr "تنظیمات پیکربندی"
+msgstr " تنظیمات پیکربندی"
 
 #. module: account_check_printing
 #: model:ir.model.fields,field_description:account_check_printing.field_print_prenumbered_checks__create_uid
@@ -186,12 +185,12 @@ msgstr "شناسه"
 msgid ""
 "In order to print multiple checks at once, they must belong to the same bank"
 " journal."
-msgstr ""
+msgstr "چاپ چندین چک به صورت همزمان تنها از یک تفکیک سند امکان‌پذیر است"
 
 #. module: account_check_printing
 #: model:ir.model,name:account_check_printing.model_account_journal
 msgid "Journal"
-msgstr "روزنامه"
+msgstr "تفکیک سند"
 
 #. module: account_check_printing
 #: model:ir.model.fields,field_description:account_check_printing.field_print_prenumbered_checks____last_update
@@ -219,7 +218,7 @@ msgstr "شماره دهی دستی"
 #: model:ir.model.fields,field_description:account_check_printing.field_res_company__account_check_printing_multi_stub
 #: model:ir.model.fields,field_description:account_check_printing.field_res_config_settings__account_check_printing_multi_stub
 msgid "Multi-Pages Check Stub"
-msgstr ""
+msgstr "ته‌چک چند صفحه‌ایی"
 
 #. module: account_check_printing
 #: model:ir.model.fields,field_description:account_check_printing.field_account_journal__check_next_number
@@ -239,6 +238,7 @@ msgid ""
 " are not already numbered, you can manage the numbering in the journal "
 "configuration page."
 msgstr ""
+"شماره چک مربوط به این پرداخت. اگر چک‌ها شماره ندارند،‌گزینه چاپ شماره چک را در تنظیمات تفکیک سند انتخاب نمایید."
 
 #. module: account_check_printing
 #: model:ir.model,name:account_check_printing.model_account_payment
@@ -251,14 +251,14 @@ msgstr "پرداخت‌ها"
 msgid ""
 "Payments to print as a checks must have 'Check' selected as payment method "
 "and not have already been reconciled"
-msgstr ""
+msgstr "چک‌هایی قابل چاپ هستند که هم روش پراخت در فرم مربوطه چک انتخاب شده باشند و هم پرداخت تهاتر نشده باشد."
 
 #. module: account_check_printing
 #: model_terms:ir.ui.view,arch_db:account_check_printing.print_pre_numbered_checks_view
 msgid ""
 "Please enter the number of the first pre-printed check that you are about to"
 " print on."
-msgstr ""
+msgstr "شماره اولین چک دسته چک را وارد کنید."
 
 #. module: account_check_printing
 #: model_terms:ir.ui.view,arch_db:account_check_printing.print_pre_numbered_checks_view
@@ -273,13 +273,13 @@ msgstr "چاپ چک"
 #. module: account_check_printing
 #: model:ir.actions.server,name:account_check_printing.action_account_print_checks
 msgid "Print Checks"
-msgstr "چاپ چکها"
+msgstr "چاپ چک‌ها"
 
 #. module: account_check_printing
 #: model:ir.model.fields,field_description:account_check_printing.field_res_company__account_check_printing_date_label
 #: model:ir.model.fields,field_description:account_check_printing.field_res_config_settings__account_check_printing_date_label
 msgid "Print Date Label"
-msgstr ""
+msgstr "چاپ تاریخ چک"
 
 #. module: account_check_printing
 #: code:addons/account_check_printing/models/account_payment.py:94
@@ -287,7 +287,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:account_check_printing.print_pre_numbered_checks_view
 #, python-format
 msgid "Print Pre-numbered Checks"
-msgstr "چاپ چکهای از پیش شماره‌گذاری شده"
+msgstr "چاپ چک‌های با شماره چاپی"
 
 #. module: account_check_printing
 #: model:ir.model,name:account_check_printing.model_account_register_payments
@@ -297,7 +297,7 @@ msgstr "ثبت پرداختها"
 #. module: account_check_printing
 #: model:ir.model.fields,field_description:account_check_printing.field_res_company__account_check_printing_margin_right
 msgid "Right Margin"
-msgstr ""
+msgstr "حاشیه راست"
 
 #. module: account_check_printing
 #: model:ir.model.fields,help:account_check_printing.field_res_company__account_check_printing_layout
@@ -306,25 +306,27 @@ msgid ""
 "Select the format corresponding to the check paper you will be printing your checks on.\n"
 "In order to disable the printing feature, select 'None'."
 msgstr ""
+"فرمت مناسب برای چاپ چک را انتخاب کنید."
+"با انتخاب «هیچ» چاپ چک غیر فعال می‌شود."
 
 #. module: account_check_printing
 #: model:ir.model.fields,help:account_check_printing.field_account_journal__check_next_number
 msgid "Sequence number of the next printed check."
-msgstr ""
+msgstr "شماره چک بعدی"
 
 #. module: account_check_printing
 #: model:ir.model.fields,help:account_check_printing.field_account_journal__check_printing_payment_method_selected
 msgid ""
 "Technical feature used to know whether check printing was enabled as payment"
 " method."
-msgstr ""
+msgstr "فیلد تکنیکال برای بررسی اینکه چاپ چک فعال شده است یا نه."
 
 #. module: account_check_printing
 #: model:ir.model.fields,help:account_check_printing.field_res_config_settings__country_code
 msgid ""
 "The ISO country code in two chars. \n"
 "You can use this field for quick search."
-msgstr ""
+msgstr "کد دوحرفی اسم کشور در استاندارد ایزو. "
 
 #. module: account_check_printing
 #: code:addons/account_check_printing/models/account_journal.py:26
@@ -332,7 +334,7 @@ msgstr ""
 msgid ""
 "The last check number was %s. In order to avoid a check being rejected by "
 "the bank, you can only use a greater number."
-msgstr ""
+msgstr "برای ایران صادق نیست"
 
 #. module: account_check_printing
 #: model:ir.model.fields,help:account_check_printing.field_account_payment__check_number
@@ -340,7 +342,7 @@ msgid ""
 "The selected journal is configured to print check numbers. If your pre-"
 "printed check paper already has numbers or if the current numbering is "
 "wrong, you can change it in the journal configuration page."
-msgstr ""
+msgstr "در تنظیمات تفکیک سند، چاپ شماره چک انتخاب شده است. اگر چک شماره دارد یا شماره غلط است در همانجا اصلاح کنید."
 
 #. module: account_check_printing
 #: model:ir.model.fields,help:account_check_printing.field_res_company__account_check_printing_multi_stub
@@ -348,7 +350,7 @@ msgstr ""
 msgid ""
 "This option allows you to print check details (stub) on multiple pages if "
 "they don't fit on a single page."
-msgstr ""
+msgstr "امکان چاپ جزییات چک (ته چک) را در چند صفحه در صورتی که در یک صفحه نگنجد، می‌دهد."
 
 #. module: account_check_printing
 #: model:ir.model.fields,help:account_check_printing.field_res_company__account_check_printing_date_label
@@ -356,13 +358,13 @@ msgstr ""
 msgid ""
 "This option allows you to print the date label on the check as per CPA. "
 "Disable this if your pre-printed check includes the date label."
-msgstr ""
+msgstr "چاپ عنوان تاریخ (درج کلمه »تاریخ»)"
 
 #. module: account_check_printing
 #: model_terms:ir.ui.view,arch_db:account_check_printing.print_pre_numbered_checks_view
 msgid ""
 "This will allow to save on payments the number of the corresponding check."
-msgstr ""
+msgstr "امکان ثبت شماره چک در فرم پرداخت را می‌دهد."
 
 #. module: account_check_printing
 #: model_terms:ir.ui.view,arch_db:account_check_printing.view_account_payment_form_inherited
@@ -375,19 +377,19 @@ msgstr "ارسال نشده"
 msgid ""
 "You have to choose a check layout. For this, go in Apps, search for 'Checks "
 "layout' and install one."
-msgstr ""
+msgstr "برای چاپ چک، ابتدا برنامه چیدمان چک را نصب کنید. "
 
 #. module: account_check_printing
 #: selection:res.company,account_check_printing_layout:0
 msgid "check in middle"
-msgstr ""
+msgstr "چک در وسط"
 
 #. module: account_check_printing
 #: selection:res.company,account_check_printing_layout:0
 msgid "check on bottom"
-msgstr ""
+msgstr "چک در پایین"
 
 #. module: account_check_printing
 #: selection:res.company,account_check_printing_layout:0
 msgid "check on top"
-msgstr ""
+msgstr "چک در بالا"

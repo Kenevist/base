@@ -27,22 +27,22 @@ msgstr ""
 #. module: pos_restaurant
 #: model_terms:pos.config,customer_facing_display_html:pos_restaurant.pos_config_restaurant
 msgid "$ 3.12"
-msgstr "3.12 ﷼"
+msgstr "۳.۱۲ ﷼"
 
 #. module: pos_restaurant
 #: model_terms:pos.config,customer_facing_display_html:pos_restaurant.pos_config_restaurant
 msgid "$ 4.40"
-msgstr "4.40 ﷼"
+msgstr "۴.۴۰ ﷼"
 
 #. module: pos_restaurant
 #: model_terms:pos.config,customer_facing_display_html:pos_restaurant.pos_config_restaurant
 msgid "$ 4.50"
-msgstr "4.50 ﷼"
+msgstr "۴.۵۰ ﷼"
 
 #. module: pos_restaurant
 #: model_terms:pos.config,customer_facing_display_html:pos_restaurant.pos_config_restaurant
 msgid "$ 8.50"
-msgstr "8.50 ﷼"
+msgstr "۸.۵۰ ﷼"
 
 #. module: pos_restaurant
 #: model_terms:ir.ui.view,arch_db:pos_restaurant.pos_config_view_form_inherit_restaurant
@@ -54,7 +54,7 @@ msgstr ""
 #. module: pos_restaurant
 #: model_terms:pos.config,customer_facing_display_html:pos_restaurant.pos_config_restaurant
 msgid "<span class=\"pos-change_amount\">$ 0.86</span>"
-msgstr "<span class=\"pos-change_amount\">﷼ 0.86</span>"
+msgstr "<span class=\"pos-change_amount\">﷼ ۰.۸۶</span>"
 
 #. module: pos_restaurant
 #: model_terms:pos.config,customer_facing_display_html:pos_restaurant.pos_config_restaurant
@@ -69,12 +69,12 @@ msgstr "<span class=\"total-amount-formatting\">جمع کل</span>"
 #. module: pos_restaurant
 #: model_terms:pos.config,customer_facing_display_html:pos_restaurant.pos_config_restaurant
 msgid "<span id=\"total-amount\" class=\"pos_total-amount\">$ 469.14</span>"
-msgstr "<span id=\"total-amount\" class=\"pos_total-amount\">﷼ 469.14</span>"
+msgstr "<span id=\"total-amount\" class=\"pos_total-amount\">﷼ ۴۶۹.۱۴</span>"
 
 #. module: pos_restaurant
 #: model_terms:pos.config,customer_facing_display_html:pos_restaurant.pos_config_restaurant
 msgid "<span>$ 470.00</span>"
-msgstr "<span>﷼ 470.00</span>"
+msgstr "<span>﷼ ۴۷۰.۰۰</span>"
 
 #. module: pos_restaurant
 #: model_terms:pos.config,customer_facing_display_html:pos_restaurant.pos_config_restaurant
