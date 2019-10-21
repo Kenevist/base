@@ -5667,7 +5667,7 @@ var DayGrid = FC.DayGrid = Grid.extend(DayTableMixin, {
 			html += this.view.buildGotoAnchorHtml(
 				date,
 				{ 'class': 'fc-day-number' },
-				date.date() // inner HTML
+				date.format('D') // inner HTML
 			);
 		}
 
