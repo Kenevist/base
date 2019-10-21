@@ -430,7 +430,6 @@ return AbstractModel.extend({
             dayNamesShort: moment.weekdaysShort(),
             firstDay: this.week_start,
             slotLabelFormat: _t.database.parameters.time_format.search("%H") != -1 ? 'H:mm': 'h(:mm)a',
-            columnFormat: odoo.session_info.user_context.lang === 'fa_IR' ? "dddd M/DD" : false,
         };
     },
     /**

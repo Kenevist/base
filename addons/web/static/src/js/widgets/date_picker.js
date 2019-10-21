@@ -29,16 +29,16 @@ var DateWidget = Widget.extend({
         this.options = _.extend({
             locale: moment.locale(),
             format : this.type_of_date === 'datetime' ? time.getLangDatetimeFormat() : time.getLangDateFormat(),
-            minDate: moment().subtract(100,"y"),
-            maxDate: moment().add(100, "y"),
+            minDate: moment({ y: 1900 }),
+            maxDate: moment({ y: 9999, M: 11, d: 31 }),
             useCurrent: false,
             icons: {
                 time: 'fa fa-clock-o',
                 date: 'fa fa-calendar',
                 up: 'fa fa-chevron-up',
                 down: 'fa fa-chevron-down',
-                previous: moment.locale()==='fa' ? 'fa fa-chevron-right' : 'fa fa-chevron-left',
-                next: moment.locale()==='fa' ?  'fa fa-chevron-left' : 'fa fa-chevron-right',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
                 today: 'fa fa-calendar-check-o',
                 clear: 'fa fa-delete',
                 close: 'fa fa-times'
