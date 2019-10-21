@@ -20,7 +20,6 @@ var dom = require('web.dom');
 var session = require('web.session');
 var time = require('web.time');
 var utils = require('web.utils');
-var pu = require('web.persian_utils');
 
 var _t = core._t;
 
@@ -91,7 +90,7 @@ function formatChar(value, field, options) {
     if (options && options.escape) {
         value = _.escape(value);
     }
-    return pu.autoFixPersian(value);
+    return value;
 }
 
 /**
@@ -116,7 +115,6 @@ function formatDate(value, field, options) {
         }
     }
     var date_format = time.getLangDateFormat();
-    value = moment.locale() === 'fa' ? value.clone().locale('fa') : value;
     return value.format(date_format);
 }
 
@@ -140,7 +138,6 @@ function formatDateTime(value, field, options) {
     if (!options || !('timezone' in options) || options.timezone) {
         value = value.clone().add(session.getTZOffset(value), 'minutes');
     }
-    value = moment.locale() === 'fa' ? value.clone().locale('fa') : value;
     return value.format(time.getLangDatetimeFormat());
 }
 
@@ -179,7 +176,7 @@ function formatFloat(value, field, options) {
     }
     var formatted = _.str.sprintf('%.' + precision + 'f', value || 0).split('.');
     formatted[0] = utils.insert_thousand_seps(formatted[0]);
-    return pu.autoPersianDigitFormat(formatted.join(l10n.decimal_point));
+    return formatted.join(l10n.decimal_point);
 }
 
 
@@ -217,7 +214,7 @@ function formatFloatTime(value) {
         min = 0;
         hour = hour + 1;
     }
-    return pu.autoPersianDigitFormat(_.str.sprintf(pattern, hour, min));
+    return _.str.sprintf(pattern, hour, min);
 }
 
 /**
@@ -245,9 +242,9 @@ function formatInteger(value, field, options) {
         return "";
     }
     if (options.humanReadable && options.humanReadable(value)) {
-        return pu.autoPersianDigitFormat(utils.human_number(value, options.decimals, options.minDigits, options.formatterCallback));
+        return utils.human_number(value, options.decimals, options.minDigits, options.formatterCallback);
     }
-    return pu.autoPersianDigitFormat(utils.insert_thousand_seps(_.str.sprintf('%d', value)));
+    return utils.insert_thousand_seps(_.str.sprintf('%d', value));
 }
 
 /**
@@ -345,7 +342,7 @@ function formatMonetary(value, field, options) {
         return formatted_value;
     }
     if (currency.position === "after") {
-        return formatted_value + '&nbsp;' + currency.symbol;
+        return formatted_value += '&nbsp;' + currency.symbol;
     } else {
         return currency.symbol + '&nbsp;' + formatted_value;
     }
@@ -366,7 +363,7 @@ function formatPercentage(value, field, options) {
     if (options.humanReadable && options.humanReadable(value * 100)) {
         return result + "%";
     }
-    return pu.autoPersianDigitFormat((parseFloat(result) + "%").replace('.', _t.database.parameters.decimal_point));
+    return (parseFloat(result) + "%").replace('.', _t.database.parameters.decimal_point);
 }
 /**
  * Returns a string representing the value of the selection.
@@ -418,14 +415,13 @@ function parseDate(value, field, options) {
     if (options && options.isUTC) {
         date = moment.utc(value);
     } else {
-        date = moment.utc(value, [datePattern, datePatternWoZero, moment.ISO_8601], moment.locale(), true);
+        date = moment.utc(value, [datePattern, datePatternWoZero, moment.ISO_8601]);
     }
     if (date.isValid()) {
         if (date.year() === 0) {
             date.year(moment.utc().year());
         }
-        if ((date.year() >= 1900 && moment.locale() !== 'fa') ||
-            (date.year() < 1900 && moment.locale() === 'fa')) {
+        if (date.year() >= 1900) {
             date.toJSON = function () {
                 return this.clone().locale('en').format('YYYY-MM-DD');
             };
@@ -463,7 +459,7 @@ function parseDateTime(value, field, options) {
         // phatomjs crash if we don't use this format
         datetime = moment.utc(value.replace(' ', 'T') + 'Z');
     } else {
-        datetime = moment.utc(value, [pattern1, pattern2, moment.ISO_8601], moment.locale(), true);
+        datetime = moment.utc(value, [pattern1, pattern2, moment.ISO_8601]);
         if (options && options.timezone) {
             datetime.add(-session.getTZOffset(datetime), 'minutes');
         }
@@ -472,8 +468,7 @@ function parseDateTime(value, field, options) {
         if (datetime.year() === 0) {
             datetime.year(moment.utc().year());
         }
-        if ((datetime.year() >= 1900 && moment.locale() !== 'fa') ||
-            (datetime.year() < 1900 && moment.locale() === 'fa')){
+        if (datetime.year() >= 1900) {
             datetime.toJSON = function () {
                 return this.clone().locale('en').format('YYYY-MM-DD HH:mm:ss');
             };
@@ -492,7 +487,6 @@ function parseDateTime(value, field, options) {
  * @returns {float|NaN} the number value contained in the string representation
  */
 function parseNumber(value) {
-    value = pu.toEnglishNum(value);
     if (core._t.database.parameters.thousands_sep) {
         var escapedSep = _.str.escapeRegExp(core._t.database.parameters.thousands_sep);
         value = value.replace(new RegExp(escapedSep, 'g'), '');

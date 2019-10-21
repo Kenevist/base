@@ -1,304 +1,8 @@
-//This is a modified version of moment.js with forced Jalali Calendar when the locale is fa_IR
 //! moment.js
 //! version : 2.17.1
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
 //! license : MIT
 //! momentjs.com
-
-/*
-* configFromISO => configFromStringAndFormat
-* configFromString => configFromISO
-* configFromArray => ---, uses dayOfYearFromWeekInfo,
-* configFromStringAndFormat => ( configFromISO if format is ISO) else configFromArray
-* configFromStringAndArray => configFromStringAndFormat
-* configFromObject => configFromArray
-* configFromInput => configFromString || configFromArray || configFromObject
-* note: prepareConfig
-* */
-
-// <PMN> Jalali Tools in JT Object
-
-;(function( global, factory ) {
-	if ( typeof define === "function" && define.amd ) {
-
-		// AMD. Register as an anonymous module.
-		define([ "JT" ], factory );
-	} else {
-
-		// Browser globals
-		global.JT = factory();
-	}
-}(this, function() {
-
-    // tested with :
-    //for(m=-24;m<25;m++)
-    //  for(d=-45;d<46;d++) {
-    //      x=JT.dateToJalali(new Date(2020,m,d,0,0,0,0));
-    //      y=JT.toJalaali(2020,m,d);
-    //      if (x.jy!=y.jy || x.jm!=y.jm || x.jd!=y.jd)
-    //          console.log(x,y);}
-    // and:
-    //for(m=-24;m<25;m++)
-    //  for(d=-45;d<46;d++) {
-    //      j=JT.dateToJalali(new Date(2020,m,d,0,0,0,0));
-    //      if (new Date(2020,m,d,0,0,0,0).getTime()!==JT.jalaliToDate(j.jy,j.jm,j.jd).getTime())
-    //          console.log(m,d,j);
-    //      }
-    const JT = {
-        MAX_JALALI_YEAR: 1500,
-        //Converts a Gregorian date to Jalaali.
-        toJalaali: (gy, gm, gd) => JT.d2j(JT.g2d(gy, gm, gd)),
-        // Converts a Jalaali date to Gregorian.
-        toGregorian: (jy, jm, jd) => JT.d2g(JT.j2d(jy, jm, jd)),
-
-        dateToJalali: (d) => !isNaN(d.getTime()) ? //checks date's validity
-            JT.toJalaali(d.getFullYear(), d.getMonth(), d.getDate()) : "Invalid Date",
-
-        dateToJalaliUTC: (d) => !isNaN(d.getTime()) ? //checks date's validity
-            JT.toJalaali(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) : "Invalid Date",
-        // Checks whether a Jalaali date is valid or not.
-        isValidJalaaliDate: (jy, jm, jd) =>
-            (jy >= -61 && jy <= 3177 &&
-                jm >= 1 && jm <= 12 &&
-                jd >= 1 && jd <= JT.jalaaliMonthLength(jy, jm)),
-
-        // Is this a leap year or not?
-        isLeapJalaaliYear: (jy) => JT.jalCal(jy).leap === 0,
-
-        jalaaliMonthLength: (jy, jm) =>
-            jm < 6 ? 31 :
-                jm < 11 ? 30 :
-                    JT.isLeapJalaaliYear(jy) ? 30 : 29,
-        jalaliToDate: (jy, jm, jd) => {
-            const g = JT.toGregorian(jy, jm, jd);
-            return new Date(g.gy, g.gm, g.gd)
-        },
-        updateDateWithJalali: (d, jy, jm, jd) => {
-            const g = JT.toGregorian(jy, jm, jd);
-            d.setFullYear(g.gy);
-            d.setMonth(g.gm,g.gd);
-            return d;
-        },
-        updateUTCDateWithJalali: (d, jy, jm, jd) => {
-            const g = JT.toGregorian(jy, jm, jd);
-            d.setUTCFullYear(g.gy);
-            d.setUTCMonth(g.gm,g.gd);
-            return d;
-        },
-        jalCal: (jy) => {
-            /*
-              This function determines if the Jalaali (Persian) year is
-              leap (366-day long) or is the common year (365 days), and
-              finds the day in March (Gregorian calendar) of the first
-              day of the Jalaali year (jy).
-
-              @param jy Jalaali calendar year (-61 to 3177)
-              @return
-                leap: number of years since the last leap year (0 to 4)
-                gy: Gregorian year of the beginning of Jalaali year
-                march: the March day of Farvardin the 1st (1st day of jy)
-              @see: http://www.astro.uni.torun.pl/~kb/Papers/EMP/PersianC-EMP.htm
-              @see: http://www.fourmilab.ch/documents/calendar/
-            */
-
-            // Jalaali years starting the 33-year rule.
-            var breaks = [-61, 9, 38, 199, 426, 686, 756, 818, 1111, 1181, 1210
-                , 1635, 2060, 2097, 2192, 2262, 2324, 2394, 2456, 3178
-            ]
-                , bl = breaks.length
-                , gy = jy + 621
-                , leapJ = -14
-                , J = breaks[0]
-                , jm
-                , jump
-                , leap
-                , leapG
-                , march
-                , n
-                , i;
-
-            if (jy < J || jy >= breaks[bl - 1])
-                throw new Error('Invalid Jalaali year ' + jy);
-
-            // Find the limiting years for the Jalaali year jy.
-            for (i = 1; i < bl; i += 1) {
-                jm = breaks[i];
-                jump = jm - J;
-                if (jy < jm)
-                    break;
-                leapJ = leapJ + JT.div(jump, 33) * 8 + JT.div(JT.mod(jump, 33), 4);
-                J = jm
-            }
-            n = jy - J;
-
-            // Find the number of leap years from AD 621 to the beginning
-            // of the current Jalaali year in the Persian calendar.
-            leapJ = leapJ + JT.div(n, 33) * 8 + JT.div(JT.mod(n, 33) + 3, 4);
-            if (JT.mod(jump, 33) === 4 && jump - n === 4)
-                leapJ += 1;
-
-            // And the same in the Gregorian calendar (until the year gy).
-            leapG = JT.div(gy, 4) - JT.div((JT.div(gy, 100) + 1) * 3, 4) - 150;
-
-            // Determine the Gregorian date of Farvardin the 1st.
-            march = 20 + leapJ - leapG;
-
-            // Find how many years have passed since the last leap year.
-            if (jump - n < 6)
-                n = n - jump + JT.div(jump + 4, 33) * 33;
-            leap = JT.mod(JT.mod(n + 1, 33) - 1, 4);
-            if (leap === -1) {
-                leap = 4
-            }
-
-            return {
-                leap: leap
-                , gy: gy
-                , march: march
-            }
-        },
-
-        fixMonthOverflow: (y,m)=>{
-            //<pmn>: support months beyond normal
-            const deltaY= Math.floor(m/ 12)
-            return {y:y+deltaY,m:m-12*deltaY}
-            //</pmn>
-        },
-        j2d: (jy, jm, jd) => {
-            /*
-          Converts a date of the Jalaali calendar to the Julian Day number.
-
-          @param jy Jalaali year (1 to 3100)
-          @param jm Jalaali month (0 to 11)
-          @param jd Jalaali day (1 to 29/30/31)
-          fixes overflow of month and day automatically
-          @return Julian Day number
-        */
-            const t = JT.fixMonthOverflow(jy,jm);
-            jy=t.y;
-            jm=t.m;
-            var r = JT.jalCal(jy);
-            return JT.g2d(r.gy, 2, r.march) + jm  * 31 - JT.div(jm, 6) * (jm - 6) + jd - 1
-        },
-
-
-        d2j: (jdn) => {
-            /*
-              Converts the Julian Day number to a date in the Jalaali calendar.
-
-              @param jdn Julian Day number
-              @return
-                jy: Jalaali year (1 to 3100)
-                jm: Jalaali month (0 to 11)
-                jd: Jalaali day (1 to 29/31)
-            */
-            var gy = JT.d2g(jdn).gy // Calculate Gregorian year (gy).
-                , jy = gy - 621
-                , r = JT.jalCal(jy)
-                , jdn1f = JT.g2d(gy, 2, r.march)
-                , jd
-                , jm
-                , k;
-
-            // Find number of days that passed since 1 Farvardin.
-            k = jdn - jdn1f;
-            if (k >= 0) {
-                if (k <= 185) {
-                    // The first 6 months.
-                    jm = JT.div(k, 31);
-                    jd = JT.mod(k, 31) + 1;
-                    return {
-                        jy: jy
-                        , jm: jm
-                        , jd: jd
-                    }
-                } else {
-                    // The remaining months.
-                    k -= 186
-                }
-            } else {
-                // Previous Jalaali year.
-                jy -= 1;
-                k += 179;
-                if (r.leap === 1)
-                    k += 1
-            }
-            jm = 6 + JT.div(k, 30);
-            jd = JT.mod(k, 30) + 1;
-            return {
-                jy: jy
-                , jm: jm
-                , jd: jd
-            }
-        },
-
-        g2d: (gy, gm, gd) => {
-            /*
-          Calculates the Julian Day number from Gregorian or Julian
-          calendar dates. This integer number corresponds to the noon of
-          the date (i.e. 12 hours of Universal Time).
-          The procedure was tested to be good since 1 March, -100100 (of both
-          calendars) up to a few million years into the future.
-
-          @param gy Calendar year (years BC numbered 0, -1, -2, ...)
-          @param gm Calendar month (0 to 11), fixes overflow of month and day automatically
-          @param gd Calendar day of the month (1 to 28/29/30/31)
-          @return Julian Day number
-        */
-            const t = JT.fixMonthOverflow(gy,gm);
-            gy=t.y;
-            gm=t.m+1;
-            var d = JT.div((gy + JT.div(gm - 8, 6) + 100100) * 1461, 4)
-                + JT.div(153 * JT.mod(gm + 9, 12) + 2, 5)
-                + gd - 34840408;
-            d = d - JT.div(JT.div(gy + 100100 + JT.div(gm - 8, 6), 100) * 3, 4) + 752;
-            return d
-        },
-
-        d2g: (jdn) => {
-            /*
-              Calculates Gregorian and Julian calendar dates from the Julian Day number
-              (jdn) for the period since jdn=-34839655 (i.e. the year -100100 of both
-              calendars) to some millions years ahead of the present.
-
-              @param jdn Julian Day number
-              @return
-                gy: Calendar year (years BC numbered 0, -1, -2, ...)
-                gm: Calendar month (0 to 11)
-                gd: Calendar day of the month M (1 to 28/29/30/31)
-            */
-            var j
-                , i
-                , gd
-                , gm
-                , gy;
-            j = 4 * jdn + 139361631;
-            j = j + JT.div(JT.div(4 * jdn + 183187720, 146097) * 3, 4) * 4 - 3908;
-            i = JT.div(JT.mod(j, 1461), 4) * 5 + 308;
-            gd = JT.div(JT.mod(i, 153), 5) + 1;
-            gm = JT.mod(JT.div(i, 153), 12) ;
-            gy = JT.div(j, 1461) - 100100 + JT.div(7 - gm, 6);
-            return {
-                gy: gy
-                , gm: gm
-                , gd: gd
-            }
-        },
-
-    };
-
-
-    JT.div = (a, b) => {
-        return ~~(a / b)
-    }
-
-    JT.mod = (a, b) => {
-        return a - ~~(a / b) * b
-    }
-
-    return JT
-}));
-
 
 ;(function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -530,14 +234,9 @@ var updateInProgress = false;
 function Moment(config) {
     copyConfig(this, config);
     this._d = new Date(config._d != null ? config._d.getTime() : NaN);
-
     if (!this.isValid()) {
         this._d = new Date(NaN);
     }
-    //<pmn>
-    this._j = JT.dateToJalali(this._d);
-    this._ju = JT.dateToJalaliUTC(this._d);
-    //</pmn>
     // Prevent infinite loop in case updateOffset creates new moment
     // objects.
     if (updateInProgress === false) {
@@ -545,59 +244,6 @@ function Moment(config) {
         hooks.updateOffset(this);
         updateInProgress = false;
     }
-    //<pmn> Override 'fa' locale
-    if (this._locale._abbr=="fa") updateLocale("fa", {
-        months: ("فروردین_اردیبهشت_خرداد_تیر_مرداد_شهریور_مهر_آبان_آذر_دی_بهمن_اسفند").split("_")
-        , monthsShort: ("فروردین_اردیبهشت_خرداد_تیر_مرداد_شهریور_مهر_آبان_آذر_دی_بهمن_اسفند").split("_").map(x=>x.slice(0,3))
-        , weekdays: ("یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_جمعه_شنبه").split("_")
-        , weekdaysShort: ("یک_دو_سه_چهار_پنج_جمعه_شنبه").split("_") //pmn made short days shorter
-        , weekdaysMin: "ی_د_س_چ_پ_ج_ش".split("_")
-        , longDateFormat:
-            {
-                LT: "HH:mm"
-                , L: "YYYY/MM/DD"
-                , LL: "D MMMM YYYY"
-                , LLL: "D MMMM YYYY LT"
-                , LLLL: "dddd، D MMMM YYYY LT"
-            }
-        , calendar:
-            {
-                sameDay: "[امروز ساعت] LT"
-                , nextDay: "[فردا ساعت] LT"
-                , nextWeek: "dddd [ساعت] LT"
-                , lastDay: "[دیروز ساعت] LT"
-                , lastWeek: "dddd [ی پیش ساعت] LT"
-                , sameElse: "L"
-            }
-        , relativeTime:
-            {
-                future: "در %s"
-                , past: "%s پیش"
-                , s: "چند ثانیه"
-                , m: "1 دقیقه"
-                , mm: "%d دقیقه"
-                , h: "1 ساعت"
-                , hh: "%d ساعت"
-                , d: "1 روز"
-                , dd: "%d روز"
-                , M: "1 ماه"
-                , MM: "%d ماه"
-                , y: "1 سال"
-                , yy: "%d سال"
-            }
-        , ordinal: "%dم",
-         week:
-            {
-                dow: 6 // Saturday is the first day of the week.
-                , doy: 12 // The week that contains Jan 1st is the first week of the year.
-            }
-        , meridiem: function (hour) {
-            return hour < 12 ? "ق.ظ" : "ب.ظ";
-        }
-    });
-
-    //</pmn>
-
 }
 
 function isMoment (obj) {
@@ -898,54 +544,14 @@ function makeGetSet (unit, keepTime) {
 }
 
 function get (mom, unit) {
-    if (mom.isValid()){
-        //<pmn>
-        if (mom._locale._abbr === "fa"){
-            if (unit==="Year" || unit=="FullYear") return mom._isUTC ? mom._ju.jy:mom._j.jy;
-            if (unit==="Month") return mom._isUTC ? mom._ju.jm:mom._j.jm;
-            if (unit==="Date") return mom._isUTC ? mom._ju.jd:mom._j.jd;
-        }
-        //</pmn>
-        return mom.isValid() ? mom._d['get' + (mom._isUTC ? 'UTC' : '') + unit]() : NaN;
-    }
-    else return NaN;
-
+    return mom.isValid() ?
+        mom._d['get' + (mom._isUTC ? 'UTC' : '') + unit]() : NaN;
 }
 
 function set$1 (mom, unit, value) {
-    //<pmn>
-    const src = mom._isUTC ? mom._ju : mom._j;
-    const dst = mom._isUTC ? mom._j : mom._ju;
-    function updateJ(){
-        JT['update' + (mom._isUTC ? 'UTC' : '') + 'DateWithJalali'](mom._d, src.jy, src.jm, src.jd);
-        let tmp = JT['dateToJalali'+(mom._isUTC ? '' : 'UTC') ](mom._d);
-        dst.jy = tmp.jy;
-        dst.jm = tmp.jm;
-        dst.jd = tmp.jd;
-
-        // fix for negative, zero and out of bound  numbers
-        tmp = JT['dateToJalali'+(mom._isUTC ? 'UTC':'') ](mom._d);
-        src.jy = tmp.jy;
-        src.jm = tmp.jm;
-        src.jd = tmp.jd;
-    }
     if (mom.isValid()) {
-        if (mom._locale._abbr === "fa" && unit === "Year" || unit == "FullYear") {
-            src.jy = +value;
-            updateJ();
-        } else if (mom._locale._abbr === "fa" && unit === "Month") {
-            src.jm = +value;
-            updateJ();
-        } else if (mom._locale._abbr === "fa" && unit === "Date") {
-            src.jd = +value;
-            updateJ();
-        } else {
-            mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](value); //not pmn
-            mom._j = JT.dateToJalali(mom._d);
-            mom._ju = JT.dateToJalaliUTC(mom._d);
-        }
+        mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](value);
     }
-    // </pmn>
 }
 
 // MOMENTS
@@ -1356,30 +962,7 @@ function setMonth (mom, value) {
             }
         }
     }
-    //<pmn>
-    if (mom._locale._abbr === "fa") {
-        const src = mom._isUTC ? mom._ju : mom._j;
-        const dst = mom._isUTC ? mom._j : mom._ju;
-        const updateJ = () => { //todo: make it an stand alone function on mom or config
-            JT['update' + (mom._isUTC ? 'UTC' : '') + 'DateWithJalali'](mom._d, src.jy, src.jm, src.jd);
-            let tmp = JT['dateToJalali' + (mom._isUTC ? '' : 'UTC')](mom._d);
-            dst.jy = tmp.jy;
-            dst.jm = tmp.jm;
-            dst.jd = tmp.jd;
-            // fix for negative, zero and out of bound  numbers
-            tmp = JT['dateToJalali' + (mom._isUTC ? 'UTC' : '')](mom._d);
-            src.jy = tmp.jy;
-            src.jm = tmp.jm;
-            src.jd = tmp.jd;
-        };
-        dayOfMonth = Math.min(src.jd, JT.jalaaliMonthLength(src.jy, value ));
-        src.jm = value;
-        src.jd = dayOfMonth;
-        updateJ();
-        return mom;
-    }
 
-    //</pmn>
     dayOfMonth = Math.min(mom.date(), daysInMonth(mom.year(), value));
     mom._d['set' + (mom._isUTC ? 'UTC' : '') + 'Month'](value, dayOfMonth);
     return mom;
@@ -2369,7 +1952,7 @@ function checkOverflow (m) {
     if (a && getParsingFlags(m).overflow === -2) {
         overflow =
             a[MONTH]       < 0 || a[MONTH]       > 11  ? MONTH :
-            a[DATE]        < 1 || a[DATE]        > ((m._locale._abbr==="fa" && a[YEAR]<JT.MAX_JALALI_YEAR)? JT.jalaaliMonthLength(a[YEAR], a[MONTH]):daysInMonth(a[YEAR], a[MONTH])) ? DATE :
+            a[DATE]        < 1 || a[DATE]        > daysInMonth(a[YEAR], a[MONTH]) ? DATE :
             a[HOUR]        < 0 || a[HOUR]        > 24 || (a[HOUR] === 24 && (a[MINUTE] !== 0 || a[SECOND] !== 0 || a[MILLISECOND] !== 0)) ? HOUR :
             a[MINUTE]      < 0 || a[MINUTE]      > 59  ? MINUTE :
             a[SECOND]      < 0 || a[SECOND]      > 59  ? SECOND :
@@ -2484,15 +2067,10 @@ function configFromISO(config) {
 
 // date from iso format or fallback
 function configFromString(config) {
-    // TODO: <pmn/>
-    let matched = aspNetJsonRegex.exec(config._i);
+    var matched = aspNetJsonRegex.exec(config._i);
 
     if (matched !== null) {
         config._d = new Date(+matched[1]);
-        //<pmn>
-        config._j = JT.dateToJalali(config._d);
-        config._ju = JT.dateToJalaliUTC(config._d);
-        //</pmn>
         return;
     }
 
@@ -2510,10 +2088,6 @@ hooks.createFromInputFallback = deprecate(
     'http://momentjs.com/guides/#/warnings/js-date/ for more info.',
     function (config) {
         config._d = new Date(config._i + (config._useUTC ? ' UTC' : ''));
-        //<pmn>
-        config._j = JT.dateToJalali(config._d);
-        config._ju = JT.dateToJalaliUTC(config._d);
-        //</pmn>
     }
 );
 
@@ -2590,15 +2164,7 @@ function configFromArray (config) {
         config._nextDay = true;
         config._a[HOUR] = 0;
     }
-    //<PMN>
-    // if current locale is jalali and input date is also jalali,
-    if (config._locale._abbr==='fa' && input[YEAR]<JT.MAX_JALALI_YEAR){
-        const t = JT.toGregorian(input[YEAR],input[MONTH],input[DATE]);
-        input[YEAR]=t.gy;
-        input[MONTH]=t.gm;
-        input[DATE]=t.gd;
-    }
-    //</PMN>
+
     config._d = (config._useUTC ? createUTCDate : createDate).apply(null, input);
     // Apply timezone offset from input. The actual utcOffset can be changed
     // with parseZone.
@@ -2609,10 +2175,6 @@ function configFromArray (config) {
     if (config._nextDay) {
         config._a[HOUR] = 24;
     }
-    //<pmn>
-    config._j = JT.dateToJalali(config._d);
-    config._ju = JT.dateToJalaliUTC(config._d);
-    //</pmn>
 }
 
 function dayOfYearFromWeekInfo(config) {
@@ -2782,10 +2344,6 @@ function configFromStringAndArray(config) {
     if (config._f.length === 0) {
         getParsingFlags(config).invalidFormat = true;
         config._d = new Date(NaN);
-        //<pmn>
-        config._j = JT.dateToJalali(config._d);
-        config._ju = JT.dateToJalaliUTC(config._d);
-        //</pmn>
         return;
     }
 
@@ -2861,10 +2419,6 @@ function prepareConfig (config) {
         return new Moment(checkOverflow(input));
     } else if (isDate(input)) {
         config._d = input;
-        //<pmn>
-        config._j = JT.dateToJalali(config._d);
-        config._ju = JT.dateToJalaliUTC(config._d);
-        //</pmn>
     } else if (isArray(format)) {
         configFromStringAndArray(config);
     } else if (format) {
@@ -2875,10 +2429,6 @@ function prepareConfig (config) {
 
     if (!isValid(config)) {
         config._d = null;
-        //<pmn>
-        config._j = null;
-        config._ju = null;
-        //</pmn>
     }
 
     return config;
@@ -2888,16 +2438,8 @@ function configFromInput(config) {
     var input = config._i;
     if (input === undefined) {
         config._d = new Date(hooks.now());
-        //<pmn>
-        config._j = JT.dateToJalali(config._d);
-        config._ju = JT.dateToJalaliUTC(config._d);
-        //</pmn>
     } else if (isDate(input)) {
         config._d = new Date(input.valueOf());
-        //<pmn>
-        config._j = JT.dateToJalali(config._d);
-        config._ju = JT.dateToJalaliUTC(config._d);
-        //</pmn>
     } else if (typeof input === 'string') {
         configFromString(config);
     } else if (isArray(input)) {
@@ -2910,10 +2452,6 @@ function configFromInput(config) {
     } else if (isNumber(input)) {
         // from milliseconds
         config._d = new Date(input);
-        //<pmn>
-        config._j = JT.dateToJalali(config._d);
-        config._ju = JT.dateToJalaliUTC(config._d);
-        //</pmn>
     } else {
         hooks.createFromInputFallback(config);
     }
@@ -4718,17 +4256,9 @@ addRegexToken('x', matchSigned);
 addRegexToken('X', matchTimestamp);
 addParseToken('X', function (input, array, config) {
     config._d = new Date(parseFloat(input, 10) * 1000);
-    //<pmn>
-    config._j = JT.dateToJalali(config._d);
-    config._ju = JT.dateToJalaliUTC(config._d);
-    //</pmn>
 });
 addParseToken('x', function (input, array, config) {
     config._d = new Date(toInt(input));
-    //<pmn>
-    config._j = JT.dateToJalali(config._d);
-    config._ju = JT.dateToJalaliUTC(config._d);
-    //</pmn>
 });
 
 // Side effect imports
@@ -4769,4 +4299,3 @@ hooks.prototype             = proto;
 return hooks;
 
 })));
-

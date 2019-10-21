@@ -2102,7 +2102,7 @@ var TempusDominusBootstrap4 = function ($) {
                 if (currentDate.weekday() === 0) {
                     row = $('<tr>');
                     if (this._options.calendarWeeks) {
-                        row.append('<td class="cw">' + currentDate.format('w') + '</td>');
+                        row.append('<td class="cw">' + currentDate.week() + '</td>');
                     }
                     html.push(row);
                 }
@@ -2136,7 +2136,7 @@ var TempusDominusBootstrap4 = function ($) {
                 if (currentDate.day() === 0 || currentDate.day() === 6) {
                     clsName += ' weekend';
                 }
-                row.append('<td data-action="selectDay" data-day="' + currentDate.format('L') + '" class="day' + clsName + '">' + currentDate.format('D') + '</td>');
+                row.append('<td data-action="selectDay" data-day="' + currentDate.format('L') + '" class="day' + clsName + '">' + currentDate.date() + '</td>');
                 currentDate.add(1, 'd');
             }
 
@@ -2314,7 +2314,7 @@ var TempusDominusBootstrap4 = function ($) {
                         if ($(e.target).is('.new')) {
                             day.add(1, 'M');
                         }
-                        this._setValue(day.date(parseInt(moment.localeData().preparse($(e.target).text(), 10))), this._getLastPickedDateIndex());
+                        this._setValue(day.date(parseInt($(e.target).text(), 10)), this._getLastPickedDateIndex());
                         if (!this._hasTime() && !this._options.keepOpen && !this._options.inline) {
                             this.hide();
                         }

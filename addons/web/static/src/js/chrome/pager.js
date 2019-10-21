@@ -3,7 +3,6 @@ odoo.define('web.Pager', function (require) {
 
 var utils = require('web.utils');
 var Widget = require('web.Widget');
-var pu = require('web.persian_utils');
 
 var direction = {
     previous: -1,
@@ -191,8 +190,8 @@ var Pager = Widget.extend({
             if (this.state.limit > 1) {
                 value += "-" + current_max;
             }
-            this.$value.html(pu.autoPersianDigitFormat(value));
-            this.$limit.html(pu.autoPersianDigitFormat(size));
+            this.$value.html(value);
+            this.$limit.html(size);
         }
     },
     /**
@@ -203,7 +202,7 @@ var Pager = Widget.extend({
     _save: function ($input) {
         var self = this;
         this.options.validate().then(function() {
-            var value = pu.toEnglishNum($input.val()).split("-");
+            var value = $input.val().split("-");
             var min = utils.confine(parseInt(value[0], 10), 1, self.state.size);
             var max = utils.confine(parseInt(value[1], 10), 1, self.state.size);
 

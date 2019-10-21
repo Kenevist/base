@@ -10,7 +10,6 @@ var view_dialogs = require('web.view_dialogs');
 var viewUtils = require('web.viewUtils');
 var Widget = require('web.Widget');
 var KanbanColumnProgressBar = require('web.KanbanColumnProgressBar');
-var pu = require('web.persian_utils');
 
 var _t = core._t;
 var QWeb = core.qweb;
@@ -159,11 +158,11 @@ var KanbanColumn = Widget.extend({
             defs.push(this.progressBar.appendTo(this.$header));
         }
 
-        var title = this.folded ? this.title + ' (' + pu.autoPersianDigitFormat(this.data.count) + ')' : this.title;
+        var title = this.folded ? this.title + ' (' + this.data.count + ')' : this.title;
         this.$header.find('.o_column_title').text(title);
 
         this.$el.toggleClass('o_column_folded', this.folded && !config.device.isMobile);
-        var tooltip = pu.autoPersianDigitFormat(this.data.count) + _t(' records');
+        var tooltip = this.data.count + _t(' records');
         tooltip = '<p>' + tooltip + '</p>' + this.tooltipInfo;
         this.$header.find('.o_kanban_header_title').tooltip({}).attr('data-original-title', tooltip);
         if (!this.remaining) {

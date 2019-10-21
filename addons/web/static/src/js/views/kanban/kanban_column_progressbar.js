@@ -4,7 +4,6 @@ odoo.define('web.KanbanColumnProgressBar', function (require) {
 var Widget = require('web.Widget');
 var session = require('web.session');
 var utils = require('web.utils');
-var pu = require('web.persian_utils');
 
 var KanbanColumnProgressBar = Widget.extend({
     template: 'KanbanView.ColumnProgressBar',
@@ -216,11 +215,11 @@ var KanbanColumnProgressBar = Widget.extend({
                 },
             });
         } else {
-            this.$number.html(pu.autoPersianDigitFormat(_getCounterHTML(end)));
+            this.$number.html(_getCounterHTML(end));
         }
 
         function _getCounterHTML(value) {
-            return  utils.human_number(value, 0, 3);
+            return utils.human_number(value, 0, 3);
         }
     },
     /**

@@ -440,12 +440,8 @@ return AbstractRenderer.extend({
                     date: moment(new Date(+obj.currentYear , +obj.currentMonth, +obj.currentDay))
                 });
             },
-            'dayNamesMin': this.state.fc_options.dayNamesShort,
-            // hack, modified moment.js returns Persian month names,
-            // but we keep small calendar in Gregorian, so we override month names here
-            'monthNames': odoo.session_info.user_context.lang === 'fa_IR' ?
-                'ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر'.split('_') :
-                this.state.fc_options.monthNamesShort,
+            'dayNamesMin' : this.state.fc_options.dayNamesShort,
+            'monthNames': this.state.fc_options.monthNamesShort,
             'firstDay': this.state.fc_options.firstDay,
         });
     },
