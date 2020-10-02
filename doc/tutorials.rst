@@ -1,5 +1,5 @@
 =========
-Tutorials
+Very Very Important Tutorials
 =========
 
 .. toctree::
